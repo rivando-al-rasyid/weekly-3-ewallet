@@ -55,6 +55,10 @@ form {
 .login-bg {
     display: none;
 }
+.register-bg {
+    display: none;
+}
+
 
 .brand img{
   padding-right: 10px;
@@ -64,12 +68,23 @@ form {
         display: block;
         flex: 0 0 50%;
         background:
+            url('../assets/image2.png'),
+            radial-gradient(50% 50% at 50% 50%, rgba(56, 104, 253, 0.87) 0%, rgba(123, 155, 255, 0) 100%);
+        background-size: 70%, 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+        .register-bg {
+        display: block;
+        flex: 0 0 50%;
+        background:
             url('../assets/image.png'),
             radial-gradient(50% 50% at 50% 50%, rgba(56, 104, 253, 0.87) 0%, rgba(123, 155, 255, 0) 100%);
         background-size: 70%, 100% 100%;
         background-repeat: no-repeat;
         background-position: center;
     }
+
 
     .login-wrapper {
         align-items: stretch;
