@@ -1,0 +1,470 @@
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #2948FF;
+      --dark: #0B132A;
+      --gray: #4F5665;
+      --light-gray: #E8E8E8;
+      --bg: #F7F8FC;
+      --green: #1EC15F;
+      --red: #D00000;
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 76px;
+      background: var(--white);
+      border-bottom: 1px solid var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 44px 0 44px;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--blue);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg { width: 20px; height: 20px; }
+
+    .logo-text {
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--blue);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .header-name {
+      font-size: 16px;
+      color: var(--gray);
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .chevron-down {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* ── SIDENAV ── */
+    .sidenav {
+      position: fixed;
+      top: 76px;
+      left: 0;
+      width: 262px;
+      height: calc(100vh - 76px);
+      background: var(--white);
+      border-right: 1px solid var(--light-gray);
+      padding: 24px 27px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sidenav-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px 10px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+      color: var(--gray);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-item:hover { background: #f0f3ff; color: var(--blue); }
+
+    .nav-item.active {
+      background: var(--blue);
+      color: var(--white);
+      font-size: 16px;
+    }
+
+    .nav-item svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    .nav-logout {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--red);
+      transition: background 0.2s;
+    }
+
+    .nav-logout:hover { background: #fff0f0; }
+    .nav-logout svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      margin-left: 262px;
+      margin-top: 76px;
+      padding: 28px 24px 28px 38px;
+      display: grid;
+      grid-template-columns: 1fr 341px;
+      gap: 24px;
+      min-height: calc(100vh - 76px);
+    }
+
+    .left-col { display: flex; flex-direction: column; gap: 20px; }
+
+    /* ── STAT CARDS ── */
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 6px;
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .stat-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    .stat-label svg { width: 20px; height: 20px; }
+
+    .stat-value {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+
+    .stat-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .stat-badge.up { color: #00A700; }
+    .stat-badge.down { color: var(--red); }
+
+    /* ── ACTION BAR ── */
+    .action-bar {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 6px;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .action-bar-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .action-btns {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary { background: var(--blue); color: white; }
+    .btn svg { width: 20px; height: 20px; }
+
+    /* ── CHART SECTION ── */
+    .chart-section {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 6px;
+      padding: 20px 22px 16px;
+      flex: 1;
+    }
+
+    .chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .chart-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .chart-filters {
+      display: flex;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: #F1F1F1;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .filter-btn:hover { background: #e4e4e4; }
+    .filter-btn svg { width: 14px; height: 14px; }
+
+    /* Bar chart */
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 0;
+      height: 200px;
+      padding-left: 54px;
+      position: relative;
+    }
+
+    .chart-grid {
+      position: absolute;
+      left: 54px; right: 0;
+      top: 0; bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .grid-line {
+      width: 100%;
+      border-top: 1px solid #E8E8E8;
+    }
+
+    .grid-line:last-child { border-color: #CCCCCC; }
+
+    .y-axis {
+      position: absolute;
+      left: 0; top: 0; bottom: 28px;
+      width: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .y-label {
+      font-size: 10px;
+      color: var(--dark);
+      transform: translateY(6px);
+    }
+
+    .bars-container {
+      display: flex;
+      align-items: flex-end;
+      width: 100%;
+      height: 172px;
+      gap: 4px;
+      padding-bottom: 0;
+    }
+
+    .bar-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .bar {
+      width: 60%;
+      background: var(--blue);
+      border-radius: 3px 3px 0 0;
+      transition: opacity 0.2s;
+      min-height: 4px;
+    }
+
+    .bar:hover { opacity: 0.75; }
+
+    .bar-label {
+      font-size: 11px;
+      color: var(--dark);
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    .x-axis-labels {
+      display: flex;
+      padding-left: 54px;
+      margin-top: 4px;
+    }
+
+    .x-label {
+      flex: 1;
+      text-align: center;
+      font-size: 11px;
+      color: var(--dark);
+    }
+
+    /* ── RIGHT SIDEBAR ── */
+    .right-sidebar {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 6px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      height: fit-content;
+    }
+
+    .sidebar-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .transaction-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .transaction-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #F5F5F5;
+    }
+
+    .transaction-item:last-child { border-bottom: none; }
+
+    .tx-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: white;
+    }
+
+    .tx-info { flex: 1; }
+
+    .tx-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.4;
+    }
+
+    .tx-type {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    .tx-amount {
+      font-size: 14px;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .tx-amount.income { color: var(--green); }
+    .tx-amount.expense { color: var(--red); }
+
+    /* colors for avatars */
+    .av-purple { background: linear-gradient(135deg,#7c3aed,#a78bfa); }
+    .av-blue   { background: linear-gradient(135deg,#2948FF,#6b8cff); }
+    .av-teal   { background: linear-gradient(135deg,#0d9488,#2dd4bf); }
+    .av-orange { background: linear-gradient(135deg,#f97316,#fb923c); }
+    .av-pink   { background: linear-gradient(135deg,#db2777,#f472b6); }
+    .av-green  { background: linear-gradient(135deg,#16a34a,#4ade80); }
+    .av-indigo { background: linear-gradient(135deg,#4338ca,#818cf8); }
+    .av-red    { background: linear-gradient(135deg,#dc2626,#f87171); }
+    .av-amber  { background: linear-gradient(135deg,#d97706,#fcd34d); }

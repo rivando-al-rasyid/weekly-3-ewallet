@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Wallet Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@600&display=swap" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="#">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="5" width="20" height="14" rx="2"/>
+          <path d="M16 12h2"/>
+          <path d="M2 10h20"/>
+        </svg>
+      </div>
+      <span class="logo-text">E-Wallet</span>
+    </a>
+    <div class="header-right">
+      <span class="header-name">Halo, Budi Santoso</span>
+      <div class="avatar">BS</div>
+      <div class="chevron-down">
+        <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+          <path d="M1 1L7 7L13 1" stroke="#4F5665" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIDENAV -->
+  <nav class="sidenav">
+    <div class="sidenav-items">
+
+      <a class="nav-item active" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        Dashboard
+      </a>
+
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M22 2L11 13"/>
+          <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+        </svg>
+        Transfer
+      </a>
+
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        Riwayat
+      </a>
+
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        Upload
+      </a>
+
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+          <path d="M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+        Pengguna
+      </a>
+
+    </div>
+
+    <div class="nav-logout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+        <polyline points="16 17 21 12 16 7"/>
+        <line x1="21" y1="12" x2="9" y2="12"/>
+      </svg>
+      Keluar
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <div class="left-col">
+
+      <!-- STAT CARDS -->
+      <div class="stat-cards">
+
+        <div class="stat-card">
+          <div class="stat-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2948FF" stroke-width="2">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 7V5a2 2 0 00-4 0v2"/>
+              <line x1="12" y1="12" x2="12" y2="16"/>
+            </svg>
+            Saldo
+          </div>
+          <div class="stat-value">Rp 2.400.000</div>
+          <div class="stat-badge up">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 10L7 4L12 10" stroke="#00A700" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            +2% · 3 Hari Lalu
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2948FF" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+            </svg>
+            Pemasukan
+          </div>
+          <div class="stat-value">Rp 1.200.000</div>
+          <div class="stat-badge up">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 10L7 4L12 10" stroke="#00A700" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            +11.01%
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2948FF" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+            </svg>
+            Pengeluaran
+          </div>
+          <div class="stat-value">Rp 800.000</div>
+          <div class="stat-badge down">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 4L7 10L12 4" stroke="#D00000" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            -5.06%
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ACTION BAR -->
+      <div class="action-bar">
+        <span class="action-bar-title">Transaksi</span>
+        <div class="action-btns">
+          <button class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            Isi Saldo
+          </button>
+          <button class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <path d="M22 2L11 13"/>
+              <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+            </svg>
+            Kirim
+          </button>
+        </div>
+      </div>
+
+      <!-- CHART -->
+      <div class="chart-section">
+        <div class="chart-header">
+          <span class="chart-title">Grafik Transaksi</span>
+          <div class="chart-filters">
+            <button class="filter-btn">
+              7 Hari
+              <svg viewBox="0 0 12 8" fill="none">
+                <path d="M1 1L6 7L11 1" stroke="#0B132A" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <button class="filter-btn">
+              Pemasukan
+              <svg viewBox="0 0 12 8" fill="none">
+                <path d="M1 1L6 7L11 1" stroke="#0B132A" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div style="position:relative; height: 220px;">
+          <!-- Y-axis labels -->
+          <div class="y-axis">
+            <span class="y-label">100k+</span>
+            <span class="y-label">75k</span>
+            <span class="y-label">50k</span>
+            <span class="y-label">25k</span>
+            <span class="y-label">0</span>
+          </div>
+          <!-- Grid lines -->
+          <div style="position:absolute; left:54px; right:0; top:0; bottom:28px; display:flex; flex-direction:column; justify-content:space-between; pointer-events:none;">
+            <div style="border-top:1px solid #E8E8E8; width:100%;"></div>
+            <div style="border-top:1px solid #E8E8E8; width:100%;"></div>
+            <div style="border-top:1px solid #E8E8E8; width:100%;"></div>
+            <div style="border-top:1px solid #E8E8E8; width:100%;"></div>
+            <div style="border-top:1px solid #CCCCCC; width:100%;"></div>
+          </div>
+          <!-- Bars + labels -->
+          <div style="position:absolute; left:54px; right:0; top:0; bottom:0; display:flex; align-items:flex-end; gap:4px; padding-bottom:28px;">
+            <!-- Sat 75% -->
+            <div class="bar-group">
+              <div class="bar" style="height:75%;"></div>
+            </div>
+            <!-- Sun 14% -->
+            <div class="bar-group">
+              <div class="bar" style="height:14%;"></div>
+            </div>
+            <!-- Mon 92% -->
+            <div class="bar-group">
+              <div class="bar" style="height:92%;"></div>
+            </div>
+            <!-- Tue 39% -->
+            <div class="bar-group">
+              <div class="bar" style="height:39%;"></div>
+            </div>
+            <!-- Wed 50% -->
+            <div class="bar-group">
+              <div class="bar" style="height:50%;"></div>
+            </div>
+            <!-- Thu 32% -->
+            <div class="bar-group">
+              <div class="bar" style="height:32%;"></div>
+            </div>
+            <!-- Fri 26% -->
+            <div class="bar-group">
+              <div class="bar" style="height:26%;"></div>
+            </div>
+          </div>
+          <!-- X-axis labels -->
+          <div style="position:absolute; left:54px; right:0; bottom:4px; display:flex; gap:4px;">
+            <div class="x-label">Sab</div>
+            <div class="x-label">Min</div>
+            <div class="x-label">Sen</div>
+            <div class="x-label">Sel</div>
+            <div class="x-label">Rab</div>
+            <div class="x-label">Kam</div>
+            <div class="x-label">Jum</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="right-sidebar">
+      <div class="sidebar-title">Transaksi Terbaru</div>
+      <div class="transaction-list">
+
+        <div class="transaction-item">
+          <div class="tx-avatar av-purple">RF</div>
+          <div class="tx-info">
+            <div class="tx-name">Robert Fox</div>
+            <div class="tx-type">Transfer</div>
+          </div>
+          <div class="tx-amount income">+Rp50.000</div>
+        </div>
+
+        <div class="transaction-item">
+          <div class="tx-avatar av-blue">FM</div>
+          <div class="tx-info">
+            <div class="tx-name">Floyd Miles</div>
+            <div class="tx-type">Kirim</div>
+          </div>
+          <div class="tx-amount expense">-Rp50.000</div>
+        </div>
+
+        <div class="transaction-item">
+          <div class="tx-avatar av-teal">UJ</div>
+          <div class="tx-info">
+            <div class="tx-name">Ujang</div>
+            <div class="tx-type">Kirim</div>
+          </div>
+          <div class="tx-amount expense">-Rp50.000</div>
+        </div>
+
+        <div class="transaction-item">
+          <div class="tx-avatar av-orange">RL</div>
+          <div class="tx-info">
+            <div class="tx-name">Raulemons</div>
+            <div class="tx-type">Transfer</div>
+          </div>
+          <div class="tx-amount income">+Rp50.000</div>
+        </div>
+
+        <div class="transaction-item">
+          <div class="tx-avatar av-pink">RV</div>
+          <div class="tx-info">
+            <div class="tx-name">Reiva</div>
+            <div class="tx-type">Transfer</div>
+          </div>
+          <div class="tx-amount income">+Rp50.000</div>
+        </div>
+
+        <div class="transaction-item">
+          <div class="tx-avatar av-green">TB</div>
+          <div class="tx-info">
+            <div class="tx-name">Thobie</div>
+            <div class="tx-type">Kirim</div>
+          </div>
+          <div class="tx-amount expense">-Rp50.000</div>
+        </div>
+
+        <div class="transaction-item">
+          <div class="tx-avatar av-indigo">BZ</div>
+          <div class="tx-info">
+            <div class="tx-name">Buzjany</div>
+            <div class="tx-type">Transfer</div>
+          </div>
+          <div class="tx-amount income">+Rp50.000</div>
+        </div>
+
+        <div class="transaction-item">
+          <div class="tx-avatar av-red">AD</div>
+          <div class="tx-info">
+            <div class="tx-name">Adisurya</div>
+            <div class="tx-type">Kirim</div>
+          </div>
+          <div class="tx-amount expense">-Rp50.000</div>
+        </div>
+
+        <div class="transaction-item">
+          <div class="tx-avatar av-amber">MG</div>
+          <div class="tx-info">
+            <div class="tx-name">Miguelle</div>
+            <div class="tx-type">Transfer</div>
+          </div>
+          <div class="tx-amount income">+Rp50.000</div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
