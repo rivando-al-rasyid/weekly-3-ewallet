@@ -84,6 +84,18 @@ form {
         background-repeat: no-repeat;
         background-position: center;
     }
+            .pin-bg {
+        display: block;
+        flex: 0 0 50%;
+        background:
+            url('../assets/image3.png'),
+            radial-gradient(50% 50% at 50% 50%, rgba(56, 104, 253, 0.87) 0%, rgba(123, 155, 255, 0) 100%);
+        background-size: 80%, 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+
 
 
     .login-wrapper {
@@ -91,6 +103,12 @@ form {
         padding: 0;
         min-height: 100vh;
     }
+        .pin-wrapper {
+        align-items: stretch;
+        padding: 0;
+        min-height: 100vh;
+    }
+
     .reset-wrapper {
         padding: 0;
         align-items: center;
