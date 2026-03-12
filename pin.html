@@ -3,42 +3,47 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login | Modern CSS</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css" rel="stylesheet"/>
-
+    <title>Enter PIN | E-Wallet</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <main class="login-wrapper">
+    <main class="pin-wrapper">
 
         <section class="login-content">
             <div class="login-container">
                 <header>
-                  <p class='brand'> <img src="assets/wallet.png" height='20' alt="">  E-Wallet</p>
-                    <strong>Enter Your Pin 👋</strong>
-                    <p>Please save your pin because this so important.. </p>
+                    <p class="brand">
+                        <img src="assets/wallet.png" height="20" alt="E-Wallet logo">
+                        E-Wallet
+                    </p>
+                    <strong>Enter Your PIN 🔐</strong>
+                    <p>Please enter your 6-digit PIN to continue. Keep your PIN safe and private.</p>
                 </header>
-                                <form action="#" method="post" class="login-form">
-                    <div class="form-group">
-                        <label for="username">Email</label>
-                        <input type="email" placeholder="Enter Your Email" id="username" required>
+
+                <form action="#" method="post" class="login-form">
+                    <div class="pin-input-group">
+                        <input type="text" maxlength="1" placeholder="_" inputmode="numeric" pattern="[0-9]*" autocomplete="off" required>
+                        <input type="text" maxlength="1" placeholder="_" inputmode="numeric" pattern="[0-9]*" autocomplete="off" required>
+                        <input type="text" maxlength="1" placeholder="_" inputmode="numeric" pattern="[0-9]*" autocomplete="off" required>
+                        <input type="text" maxlength="1" placeholder="_" inputmode="numeric" pattern="[0-9]*" autocomplete="off" required>
+                        <input type="text" maxlength="1" placeholder="_" inputmode="numeric" pattern="[0-9]*" autocomplete="off" required>
+                        <input type="text" maxlength="1" placeholder="_" inputmode="numeric" pattern="[0-9]*" autocomplete="off" required>
                     </div>
 
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" placeholder="Enter Your Password" id="password" required>
+                    <button type="submit" class="btn-login">Submit</button>
+                    <div class="center">
+                        Forgot Your PIN? <a href="reset.html" class="brand" style="font-size:0.875rem;">Reset</a>
                     </div>
-                    <button type="submit" class="btn-login">Log In</button>
-                    <div class='center'>Forgot Your Pin? <span class='brand'>Reset</span></div>
                 </form>
             </div>
         </section>
-                <aside class="pin-bg" aria-hidden="true">
-                </aside>
+
+        <aside class="pin-bg" aria-hidden="true"></aside>
 
     </main>
+
 
 </body>
 </html>

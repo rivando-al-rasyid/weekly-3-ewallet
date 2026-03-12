@@ -10,6 +10,14 @@ body {
     line-height: 1.6;
 }
 
+/* Override Flat UI / browser defaults — form must be transparent */
+form {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
 .brand {
     color: #2948FF;
     padding: 0;
@@ -21,9 +29,7 @@ body {
 .center {
     text-align: center;
 }
-form {
-  background-color: #fff;
-}
+
 .divider {
     display: flex;
     align-items: center;
@@ -42,8 +48,11 @@ form {
 .divider:not(:empty)::before { margin-right: .5em; }
 .divider:not(:empty)::after  { margin-left:  .5em; }
 
-/* Layout Container */
-.login-wrapper {
+/* =========================================
+   Layout Wrappers
+   ========================================= */
+.login-wrapper,
+.pin-wrapper {
     display: flex;
     min-height: 100vh;
     align-items: center;
@@ -51,19 +60,25 @@ form {
     padding: 40px 20px;
 }
 
-/* Hide aside on mobile, show on desktop */
-.login-bg {
-    display: none;
-}
-.register-bg {
+.login-bg,
+.register-bg,
+.pin-bg {
     display: none;
 }
 
-
-.brand img{
-  padding-right: 10px;
+.brand img {
+    padding-right: 10px;
 }
+
 @media (min-width: 992px) {
+    .login-wrapper,
+    .pin-wrapper {
+        align-items: stretch;
+        padding: 0;
+        min-height: 100vh;
+        justify-content: flex-start;
+    }
+
     .login-bg {
         display: block;
         flex: 0 0 50%;
@@ -74,7 +89,8 @@ form {
         background-repeat: no-repeat;
         background-position: center;
     }
-        .register-bg {
+
+    .register-bg {
         display: block;
         flex: 0 0 50%;
         background:
@@ -84,7 +100,8 @@ form {
         background-repeat: no-repeat;
         background-position: center;
     }
-            .pin-bg {
+
+    .pin-bg {
         display: block;
         flex: 0 0 50%;
         background:
@@ -95,57 +112,13 @@ form {
         background-position: center;
     }
 
-
-
-
-    .login-wrapper {
-        align-items: stretch;
-        padding: 0;
-        min-height: 100vh;
-    }
-        .pin-wrapper {
-        align-items: stretch;
-        padding: 0;
-        min-height: 100vh;
-    }
-
-    .reset-wrapper {
-        padding: 0;
-        align-items: center;
-        min-height: 100vh;
-
-    }
-
-
     .login-content {
-        border-radius:  0 40px 40px 0  ;
-        box-shadow: none;
-        flex: 0 0 50%;
-        max-width: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 60px 48px;
-    }
-}
-
-/* Card — mobile */
-.login-content {
-    background-color: #fff;
-    border-radius: 40px;
-    width: 100%;
-    max-width: 440px;
-    padding: 48px 40px;
-}
-
-/* Card — desktop override */
-@media (min-width: 992px) {
-    .login-content {
-        border-radius:  0 40px 40px 0 ;
+        border-radius: 0;
         box-shadow: none;
         flex: 0 0 50%;
         max-width: 50%;
         width: 50%;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -153,8 +126,28 @@ form {
     }
 
     .login-container {
-        max-width: 30vp;
+        max-width: 400px;
         width: 100%;
+    }
+}
+
+/* =========================================
+   Login Content Card
+   ========================================= */
+.login-content {
+    background-color: #fff;
+    border-radius: 40px; /* rounded on mobile */
+    width: 100%;
+    max-width: 440px;
+    padding: 48px 40px;
+}
+
+@media (min-width: 992px) {
+    /* Reset mobile card constraints so white fills the full left panel */
+    .login-content {
+        border-radius: 0 40px 40px 0;
+        max-width: 50%;
+        padding: 60px 48px;
     }
 }
 
@@ -162,7 +155,9 @@ form {
     width: 100%;
 }
 
-/* Header */
+/* =========================================
+   Header
+   ========================================= */
 header {
     margin-bottom: 28px;
 }
@@ -189,7 +184,9 @@ header p.brand {
     margin-bottom: 4px;
 }
 
-/* Social Buttons */
+/* =========================================
+   Social Buttons
+   ========================================= */
 .social-auth {
     display: flex;
     flex-direction: column;
@@ -233,7 +230,9 @@ header p.brand {
     box-shadow: none;
 }
 
-/* Form */
+/* =========================================
+   Form
+   ========================================= */
 .login-form {
     margin-top: 8px;
 }
@@ -260,6 +259,24 @@ input[type="password"] {
     font-family: 'Roboto', sans-serif;
     transition: border-color 0.2s, box-shadow 0.2s;
     outline: none;
+    background-color: #fff;
+    color: #000;
+}
+
+input[type="email"] {
+    background-image: url('../assets/email.png');
+    background-position: 12px center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding: 12px 20px 12px 42px;
+}
+
+input[type="password"] {
+    background-image: url('../assets/kunci.png'), url('../assets/mata.png');
+    background-position: 12px center, calc(100% - 12px) center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 20px, 20px;
+    padding: 12px 42px 12px 42px;
 }
 
 input[type="email"]:focus,
@@ -268,7 +285,9 @@ input[type="password"]:focus {
     box-shadow: 0 0 0 3px rgba(41, 72, 255, 0.1);
 }
 
-/* Submit Button */
+/* =========================================
+   Submit Button
+   ========================================= */
 .btn-login {
     width: 100%;
     padding: 14px;
@@ -308,52 +327,66 @@ input[type="password"]:focus {
     color: #2948FF;
 }
 
-/* Input Email dengan Ikon Kiri */
-input[type="email"] {
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid #ddd; /* Sesuaikan ketebalan agar tidak terlalu kaku */
-    border-radius: 8px;
-    font-size: 16px;
-    color: #000;
-
-    /* Ikon Email di Kiri */
-    background-image: url('../assets/email.png');
-    background-position: 12px center; /* 12px dari kiri, tengah secara vertikal */
-    background-repeat: no-repeat;
-    background-size: 20px; /* Sesuaikan ukuran ikon */
-
-    padding: 12px 20px 12px 42px; /* Padding kiri lebih besar (42px) agar teks tidak menabrak ikon */
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
+/* =========================================
+   Reset Password Page
+   ========================================= */
+.reset-wrapper {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
 }
 
-/* Input Password dengan Ikon Kiri (Kunci) dan Kanan (Mata) */
-input[type="password"] {
+.reset-card {
+    background-color: #fff;
+    border-radius: 24px;
     width: 100%;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #000;
-
-    /* MULTIPLE BACKGROUNDS: Kunci (kiri) dan Mata (kanan) */
-    background-image: url('../assets/kunci.png'), url('../assets/mata.png');
-    background-position: 12px center, calc(100% - 12px) center;
-    background-repeat: no-repeat, no-repeat;
-    background-size: 20px, 20px;
-
-    /* Padding: Atas Kanan Bawah Kiri */
-    /* Padding kiri (42px) untuk ikon kunci, Padding kanan (42px) untuk ikon mata */
-    padding: 12px 42px 12px 42px;
-
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
+    max-width: 440px;
+    padding: 48px 40px;
+    box-shadow: 0 8px 40px rgba(41, 72, 255, 0.12);
 }
 
-/* Tambahkan efek fokus agar konsisten */
-input[type="email"]:focus,
-input[type="password"]:focus {
+/* =========================================
+   PIN Page — OTP Input
+   ========================================= */
+.pin-input-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 28px 0 32px;
+}
+
+.pin-input-group input[type="text"] {
+    width: 52px;
+    height: 60px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    background-color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    caret-color: #2948FF;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.pin-input-group input[type="text"]::placeholder {
+    color: #ccc;
+    font-weight: 400;
+}
+
+.pin-input-group input[type="text"]:focus {
     border-color: #2948FF;
-    box-shadow: 0 0 0 3px rgba(41, 72, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(41, 72, 255, 0.12);
+    transform: translateY(-2px);
+}
+
+.pin-input-group input[type="text"].filled {
+    border-color: #2948FF;
+    background-color: #f0f3ff;
 }
