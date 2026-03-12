@@ -1,0 +1,26 @@
+{
+  "name": "weekly-3-ewallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rivando-al-rasyid/weekly-3-ewallet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rivando-al-rasyid/weekly-3-ewallet/issues"
+  },
+  "homepage": "https://github.com/rivando-al-rasyid/weekly-3-ewallet#readme",
+  "devDependencies": {
+    "eslint": "^10.0.3",
+    "globals": "^17.4.0",
+    "prettier": "3.8.1"
+  }
+}
