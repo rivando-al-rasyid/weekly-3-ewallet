@@ -7,6 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@600&display=swap" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
 
+
+
 </head>
 <body>
 
@@ -24,11 +26,32 @@
     </a>
     <div class="header-right">
       <span class="header-name">Halo, Budi Santoso</span>
-      <div class="avatar">BS</div>
-      <div class="chevron-down">
-        <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
-          <path d="M1 1L7 7L13 1" stroke="#4F5665" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+      <div class="user-dropdown" id="userDropdown">
+        <div class="user-dropdown-trigger" onclick="toggleUserDropdown()">
+          <div class="avatar">BS</div>
+          <div class="chevron-down" id="userChevron">
+            <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+              <path d="M1 1L7 7L13 1" stroke="#4F5665" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="user-dropdown-menu" id="userDropdownMenu">
+          <a class="dropdown-item" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            Profile
+          </a>
+          <a class="dropdown-item dropdown-item-danger" href="#" onclick="confirmLogout(event)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+              <polyline points="16 17 21 12 16 7"/>
+              <line x1="21" y1="12" x2="9" y2="12"/>
+            </svg>
+            Keluar
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -84,13 +107,25 @@
 
     </div>
 
-    <div class="nav-logout">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
-        <polyline points="16 17 21 12 16 7"/>
-        <line x1="21" y1="12" x2="9" y2="12"/>
-      </svg>
-      Keluar
+    <div class="nav-logout-wrapper">
+      <div class="nav-logout" onclick="toggleLogoutDropdown()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Keluar
+        <svg id="logoutChevron" viewBox="0 0 14 8" fill="none" style="margin-left:auto;width:12px;height:12px;transition:transform 0.25s;">
+          <path d="M1 1L7 7L13 1" stroke="#D00000" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="logout-dropdown" id="logoutDropdown">
+        <div class="logout-confirm-text">Yakin ingin keluar?</div>
+        <div class="logout-confirm-actions">
+          <button class="logout-cancel-btn" onclick="toggleLogoutDropdown()">Batal</button>
+          <button class="logout-confirm-btn" onclick="doLogout()">Ya, Keluar</button>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -194,66 +229,9 @@
           </div>
         </div>
 
-        <div style="position:relative; height: 220px;">
-          <!-- Y-axis labels -->
-          <div class="y-axis">
-            <span class="y-label">100k+</span>
-            <span class="y-label">75k</span>
-            <span class="y-label">50k</span>
-            <span class="y-label">25k</span>
-            <span class="y-label">0</span>
-          </div>
-          <!-- Grid lines -->
-          <div style="position:absolute; left:54px; right:0; top:0; bottom:28px; display:flex; flex-direction:column; justify-content:space-between; pointer-events:none;">
-            <div style="border-top:1px solid #E8E8E8; width:100%;"></div>
-            <div style="border-top:1px solid #E8E8E8; width:100%;"></div>
-            <div style="border-top:1px solid #E8E8E8; width:100%;"></div>
-            <div style="border-top:1px solid #E8E8E8; width:100%;"></div>
-            <div style="border-top:1px solid #CCCCCC; width:100%;"></div>
-          </div>
-          <!-- Bars + labels -->
-          <div style="position:absolute; left:54px; right:0; top:0; bottom:0; display:flex; align-items:flex-end; gap:4px; padding-bottom:28px;">
-            <!-- Sat 75% -->
-            <div class="bar-group">
-              <div class="bar" style="height:75%;"></div>
-            </div>
-            <!-- Sun 14% -->
-            <div class="bar-group">
-              <div class="bar" style="height:14%;"></div>
-            </div>
-            <!-- Mon 92% -->
-            <div class="bar-group">
-              <div class="bar" style="height:92%;"></div>
-            </div>
-            <!-- Tue 39% -->
-            <div class="bar-group">
-              <div class="bar" style="height:39%;"></div>
-            </div>
-            <!-- Wed 50% -->
-            <div class="bar-group">
-              <div class="bar" style="height:50%;"></div>
-            </div>
-            <!-- Thu 32% -->
-            <div class="bar-group">
-              <div class="bar" style="height:32%;"></div>
-            </div>
-            <!-- Fri 26% -->
-            <div class="bar-group">
-              <div class="bar" style="height:26%;"></div>
-            </div>
-          </div>
-          <!-- X-axis labels -->
-          <div style="position:absolute; left:54px; right:0; bottom:4px; display:flex; gap:4px;">
-            <div class="x-label">Sab</div>
-            <div class="x-label">Min</div>
-            <div class="x-label">Sen</div>
-            <div class="x-label">Sel</div>
-            <div class="x-label">Rab</div>
-            <div class="x-label">Kam</div>
-            <div class="x-label">Jum</div>
-          </div>
+        <div>
+          <canvas id="myChart"></canvas>
         </div>
-
       </div>
     </div>
 
@@ -347,5 +325,84 @@
     </div>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    function toggleUserDropdown() {
+      const menu = document.getElementById('userDropdownMenu');
+      const chevron = document.getElementById('userChevron');
+      const isOpen = menu.classList.toggle('open');
+      chevron.style.transform = isOpen ? 'rotate(180deg)' : '';
+      if (isOpen) document.addEventListener('click', closeUserDropdownOutside);
+    }
+
+    function closeUserDropdownOutside(e) {
+      const dd = document.getElementById('userDropdown');
+      if (!dd.contains(e.target)) {
+        document.getElementById('userDropdownMenu').classList.remove('open');
+        document.getElementById('userChevron').style.transform = '';
+        document.removeEventListener('click', closeUserDropdownOutside);
+      }
+    }
+
+    function confirmLogout(e) {
+      e.preventDefault();
+      document.getElementById('userDropdownMenu').classList.remove('open');
+      toggleLogoutDropdown();
+    }
+
+    function toggleLogoutDropdown() {
+      const dd = document.getElementById('logoutDropdown');
+      const chevron = document.getElementById('logoutChevron');
+      const isOpen = dd.classList.toggle('open');
+      chevron.style.transform = isOpen ? 'rotate(180deg)' : '';
+    }
+
+    function doLogout() {
+      alert('Anda telah keluar.');
+    }
+
+      const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['sat', 'sunday', 'monday', 'tue', 'wed', 'thu','fri'],
+      datasets: [{
+        backgroundColor : "blue",
+        data: [14000, 2000, 94000, 30000, 43000, 22000, 15000],
+        borderWidth: 1
+      }]
+    },
+    options: {
+          plugins: {
+      legend: { display: false },
+        },
+
+      scales: {
+        y: {
+          grid: {
+          drawTicks: true,        // This keeps the little dash next to the number
+          color: '#000000',       // Color of the dash
+        },
+        ticks: {
+          padding: 10,            // Adds space between the number and the dash
+          stepSize: 25000, // This creates the 25k increments
+          callback: function(value) {
+            return value;
+          }
+        },
+          beginAtZero: true
+        },
+        x: {
+        grid: {
+          display: false          // Usually looks better to hide x-axis grid too
+        }
+      }
+      }
+    }
+  });
+
+  </script>
 </body>
 </html>

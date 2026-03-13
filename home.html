@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zwallet — Smart E-Wallet</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@600&family=Plus+Jakarta+Sans:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       INLINE STYLES — self-contained, no external CSS file needed
+       ============================================================ */
+
+    /* ---------- RESET & BASE ---------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:        #2948FF;
+      --blue-grad:   linear-gradient(180deg, #396AFC 0%, #2948FF 100%);
+      --dark:        #0B132A;
+      --gray:        #4F5665;
+      --light-gray:  #E8E8E8;
+      --white:       #FFFFFF;
+      --orange:      #FF8906;
+      --card-bg:     rgba(232,232,232,0.3);
+      --border:      #DEDEDE;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ============================================================
+       PAGE SWITCHER
+       ============================================================ */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ============================================================
+       ① LANDING PAGE
+       ============================================================ */
+
+    /* ----- NAVBAR ----- */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      height: 76px;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 130px;
+    }
+
+    .navbar__logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .navbar__logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--white);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .navbar__logo-icon svg { width: 22px; height: 22px; }
+
+    .navbar__logo-text {
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      color: var(--white);
+    }
+
+    .navbar__cta { display: flex; align-items: center; gap: 16px; }
+
+    .btn-signin {
+      padding: 10px 22px;
+      border: 1.5px solid var(--white);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      transition: background .2s, color .2s;
+    }
+    .btn-signin:hover { background: rgba(255,255,255,.15); }
+
+    .btn-signup {
+      padding: 10px 22px;
+      border-radius: 6px;
+      background: var(--white);
+      color: var(--blue);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      transition: opacity .2s;
+    }
+    .btn-signup:hover { opacity: .9; }
+
+    /* ----- HERO ----- */
+    .hero {
+      width: 100%;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 130px;
+      gap: 0;
+    }
+
+    .hero__copy {
+      flex: 0 0 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hero__title {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 1.2;
+      color: var(--dark);
+    }
+
+    .hero__title span { color: var(--blue); }
+
+    .hero__subtitle {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--gray);
+      max-width: 440px;
+    }
+
+    .btn-get-started {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--blue);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      width: fit-content;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 24px rgba(41,72,255,.3);
+    }
+    .btn-get-started:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(41,72,255,.4); }
+
+    .hero__badges {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .hero__badges-label {
+      font-size: 14px;
+      color: #3A3D42;
+    }
+
+    .hero__badges-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .badge-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 1.5px solid var(--light-gray);
+      border-radius: 8px;
+      background: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .badge-btn:hover { border-color: var(--blue); box-shadow: 0 2px 12px rgba(41,72,255,.12); }
+    .badge-btn svg { width: 20px; height: 20px; }
+
+    .hero__image-wrap {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      min-height: 420px;
+    }
+
+    .hero__blob {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(41,72,255,.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero__phone {
+      position: relative;
+      z-index: 2;
+      width: 260px;
+      filter: drop-shadow(0 24px 48px rgba(41,72,255,.25));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-14px); }
+    }
+
+    /* ----- BRAND STRIP ----- */
+    .brand-strip {
+      width: 100%;
+      padding: 32px 130px;
+      background: rgba(232,232,232,.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      overflow: hidden;
+    }
+
+    .brand-strip__label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-strip__logos {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .brand-logo {
+      width: 80px;
+      height: 32px;
+      background: var(--light-gray);
+      border-radius: 6px;
+      opacity: .5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gray);
+      letter-spacing: .5px;
+    }
+
+    /* ----- ABOUT / FEATURE CARDS ----- */
+    .about-section {
+      padding: 80px 130px;
+      display: flex;
+      gap: 60px;
+    }
+
+    .about-section__copy {
+      flex: 0 0 420px;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+
+    .feature-cards {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--blue-grad);
+      border-radius: 16px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+      transition: transform .25s, box-shadow .25s;
+      box-shadow: 0 4px 20px rgba(41,72,255,.18);
+    }
+    .feature-card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(41,72,255,.28); }
+
+    .feature-card__circle {
+      width: 60px;
+      height: 60px;
+      background: rgba(255,255,255,.18);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(255,255,255,.35);
+    }
+    .feature-card__circle svg { width: 28px; height: 28px; }
+
+    .feature-card__title {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--white);
+    }
+
+    .feature-card__desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255,255,255,.85);
+    }
+
+    /* ----- FEATURES SECTION (blue BG) ----- */
+    .features-section {
+      width: 100%;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 80px 130px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .features-section::before {
+      content: '';
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .features-section__phone-wrap {
+      flex: 0 0 300px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .features-section__phone {
+      width: 220px;
+      filter: drop-shadow(0 -8px 30px rgba(0,0,0,.35));
+      border-radius: 24px;
+    }
+
+    .features-section__copy {
+      flex: 1;
+      padding-left: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .features-section__title {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1.2;
+      color: var(--white);
+    }
+
+    .features-section__subtitle {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,.75);
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .feature-item__icon-wrap {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(255,255,255,.3);
+    }
+    .feature-item__icon-wrap svg { width: 22px; height: 22px; }
+
+    .feature-item__name {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .feature-item__desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255,255,255,.75);
+    }
+
+    .btn-get-started--white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--white);
+      border-radius: 8px;
+      color: var(--blue);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      width: fit-content;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-get-started--white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+
+    /* ----- TESTIMONIALS ----- */
+    .testimonials-section {
+      padding: 80px 130px;
+    }
+
+    .testimonials-section__header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .testimonials-section__header .section-title {
+      font-size: 42px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+      transition: transform .25s, box-shadow .25s;
+      border: 1.5px solid transparent;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(41,72,255,.2);
+      box-shadow: 0 8px 32px rgba(41,72,255,.08);
+    }
+
+    .testimonial-card__avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--blue-grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .testimonial-card__name {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--dark);
+    }
+
+    .star-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .star { color: var(--orange); font-size: 16px; }
+
+    .star-row__score {
+      font-size: 14px;
+      color: var(--dark);
+      margin-left: 6px;
+    }
+
+    .testimonial-card__quote {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1;
+      align-self: flex-start;
+      opacity: .4;
+    }
+
+    .testimonial-card__text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+
+    /* ----- FOOTER ----- */
+    .footer {
+      background: var(--blue);
+      padding: 64px 130px 32px;
+      color: var(--white);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 280px 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,.25);
+    }
+
+    .footer__brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .footer__brand-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(255,255,255,.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer__brand-icon svg { width: 24px; height: 24px; }
+
+    .footer__brand-name {
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+    }
+
+    .footer__brand-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,.7);
+    }
+
+    .footer__col-title {
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: rgba(255,255,255,.9);
+    }
+
+    .footer__contact-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 14px;
+      color: rgba(255,255,255,.8);
+    }
+    .footer__contact-row svg { width: 18px; height: 18px; flex-shrink: 0; opacity: .7; }
+
+    .footer__newsletter-input {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .footer__newsletter-input svg { width: 16px; height: 16px; opacity: .6; flex-shrink: 0; }
+
+    .footer__newsletter-input input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      color: var(--white);
+      placeholder-color: rgba(255,255,255,.5);
+    }
+
+    .footer__newsletter-input input::placeholder { color: rgba(255,255,255,.5); }
+
+    .btn-subscribe {
+      width: 100%;
+      padding: 11px;
+      background: var(--white);
+      border-radius: 8px;
+      color: var(--blue);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      transition: opacity .2s;
+    }
+    .btn-subscribe:hover { opacity: .9; }
+
+    .footer__social {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .2s;
+    }
+    .social-btn:hover { transform: scale(1.1); }
+    .social-btn svg { width: 16px; height: 16px; fill: var(--blue); }
+
+    .footer__bottom {
+      padding-top: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,.6);
+    }
+
+    /* ============================================================
+       ② ENTER PIN PAGE
+       ============================================================ */
+    .pin-page {
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    /* Left white panel */
+    .pin-page__left {
+      flex: 0 0 710px;
+      background: var(--white);
+      border-radius: 0 40px 40px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 8px 0 40px rgba(41,72,255,.08);
+    }
+
+    /* Right blue panel */
+    .pin-page__right {
+      flex: 1;
+      background: linear-gradient(180deg, #396AFC 0%, #2948FF 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pin-page__right::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(50% 50% at 50% 50%, rgba(56,104,253,.87) 0%, rgba(123,155,255,0) 100%);
+    }
+
+    .pin-page__illustration {
+      position: relative;
+      z-index: 2;
+      width: 70%;
+      max-width: 420px;
+    }
+
+    .pin-form {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Logo inside pin form */
+    .pin-form__logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .pin-form__logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--blue);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pin-form__logo-icon svg { width: 18px; height: 18px; }
+
+    .pin-form__logo-text {
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--blue);
+    }
+
+    .pin-form__title {
+      font-weight: 600;
+      font-size: 28px;
+      color: var(--dark);
+    }
+
+    .pin-form__subtitle {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+
+    /* PIN dots */
+    .pin-dots {
+      display: flex;
+      gap: 14px;
+      justify-content: flex-start;
+      padding: 16px 0;
+    }
+
+    .pin-dot {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      border: 2px solid var(--light-gray);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--dark);
+      transition: border-color .2s, background .2s, transform .15s;
+    }
+
+    .pin-dot.filled {
+      border-color: var(--blue);
+      background: rgba(41,72,255,.06);
+    }
+
+    .pin-dot.active {
+      border-color: var(--blue);
+      transform: scale(1.05);
+      box-shadow: 0 0 0 4px rgba(41,72,255,.12);
+    }
+
+    /* Numpad */
+    .numpad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 320px;
+    }
+
+    .numpad-key {
+      height: 54px;
+      border-radius: 12px;
+      border: 1.5px solid var(--light-gray);
+      background: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s, border-color .15s, transform .1s;
+      user-select: none;
+    }
+    .numpad-key:hover { background: rgba(41,72,255,.06); border-color: var(--blue); }
+    .numpad-key:active { transform: scale(.95); }
+
+    .numpad-key--delete {
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    .numpad-key--empty {
+      border-color: transparent;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .btn-submit-pin {
+      width: 100%;
+      padding: 15px;
+      background: var(--blue);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      transition: opacity .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(41,72,255,.3);
+    }
+    .btn-submit-pin:hover { opacity: .9; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(41,72,255,.4); }
+    .btn-submit-pin:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    .pin-form__forgot {
+      text-align: center;
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    .pin-form__forgot a {
+      color: var(--blue);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Nav link back */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--blue);
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    /* ============================================================
+       TOAST NOTIFICATION
+       ============================================================ */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--dark);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 8px 32px rgba(0,0,0,.2);
+      z-index: 9999;
+      transition: transform .35s cubic-bezier(.34,1.56,.64,1), opacity .35s;
+      opacity: 0;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* ============================================================
+       SCROLL ANIMATIONS
+       ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       RESPONSIVE ADJUSTMENTS
+       ============================================================ */
+    @media (max-width: 1100px) {
+      .navbar { padding: 0 40px; }
+      .hero { padding: 48px 40px; flex-direction: column; text-align: center; }
+      .hero__copy { flex: none; align-items: center; }
+      .about-section { padding: 48px 40px; flex-direction: column; }
+      .feature-cards { grid-template-columns: repeat(2, 1fr); }
+      .features-section { padding: 48px 40px; flex-direction: column; }
+      .features-section__copy { padding-left: 0; margin-top: 40px; }
+      .testimonials-section { padding: 48px 40px; }
+      .testimonials-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .footer { padding: 48px 40px 24px; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+      .pin-page { flex-direction: column; }
+      .pin-page__left { flex: none; border-radius: 0; padding: 32px 24px; }
+      .pin-page__right { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast"></div>
+
+<!-- ===========================
+     PAGE 1: LANDING
+=========================== -->
+<div class="page active" id="page-landing">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar__logo">
+      <div class="navbar__logo-icon">
+        <!-- Wallet icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2948FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="6" width="22" height="14" rx="3"/>
+          <path d="M1 10h22"/>
+          <circle cx="17" cy="15" r="1.5" fill="#2948FF" stroke="none"/>
+        </svg>
+      </div>
+      <span class="navbar__logo-text">Zwallet</span>
+    </div>
+    <div class="navbar__cta">
+      <button class="btn-signin" onclick="showPage('page-pin')">Sign In</button>
+      <button class="btn-signup" onclick="showToast('Redirecting to registration…')">Sign Up</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__copy reveal">
+      <h1 class="hero__title">Smart Way to Your<br><span>Financial</span> Business</h1>
+      <p class="hero__subtitle">We bring you a mobile app for banking problems that often waste much of your time. Fast, secure, and 100% free.</p>
+      <button class="btn-get-started" onclick="showPage('page-pin')">
+        Get Started
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <div class="hero__badges">
+        <span class="hero__badges-label">Available on</span>
+        <div class="hero__badges-row">
+          <button class="badge-btn" onclick="showToast('Opening Google Play Store…')">
+            <!-- Play store icon -->
+            <svg viewBox="0 0 24 24" fill="#2948FF"><path d="M3.18 23.72A1 1 0 0 1 2 22.77V1.23a1 1 0 0 1 1.18-.95l13.9 10.77a1 1 0 0 1 0 1.9L3.18 23.72z"/><path d="M16.68 12L5 4.07l12.88 7.43L16.68 12zM5 19.93l11.68-7.5-1.2-.7L5 19.93z" opacity=".5"/></svg>
+            Google Play
+          </button>
+          <button class="badge-btn" onclick="showToast('Opening App Store…')">
+            <!-- Apple icon -->
+            <svg viewBox="0 0 24 24" fill="#2948FF"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.22 1.3-2.2 3.88.03 3.06 2.69 4.08 2.72 4.09l-.07.1zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hero__image-wrap reveal" style="animation-delay:.15s">
+      <div class="hero__blob"></div>
+      <!-- Phone mockup SVG -->
+      <svg class="hero__phone" viewBox="0 0 260 530" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="256" height="526" rx="36" fill="#0B132A" stroke="#2948FF" stroke-width="3"/>
+        <rect x="14" y="14" width="232" height="502" rx="28" fill="#1a2340"/>
+        <!-- Status bar -->
+        <rect x="80" y="22" width="100" height="18" rx="9" fill="#0B132A"/>
+        <!-- Blue header card -->
+        <rect x="24" y="50" width="212" height="120" rx="18" fill="url(#hg)"/>
+        <defs>
+          <linearGradient id="hg" x1="24" y1="50" x2="236" y2="170" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#396AFC"/>
+            <stop offset="1" stop-color="#2948FF"/>
+          </linearGradient>
+        </defs>
+        <text x="40" y="82" font-family="Montserrat" font-size="11" fill="rgba(255,255,255,.7)">Total Balance</text>
+        <text x="40" y="108" font-family="Montserrat" font-size="22" font-weight="700" fill="white">Rp 5.280.000</text>
+        <!-- Quick actions -->
+        <rect x="24" y="188" width="212" height="90" rx="14" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        <circle cx="68" cy="220" r="18" fill="rgba(41,72,255,.25)"/>
+        <circle cx="130" cy="220" r="18" fill="rgba(41,72,255,.25)"/>
+        <circle cx="192" cy="220" r="18" fill="rgba(41,72,255,.25)"/>
+        <text x="60" y="252" font-family="Montserrat" font-size="9" fill="rgba(255,255,255,.5)">Transfer</text>
+        <text x="120" y="252" font-family="Montserrat" font-size="9" fill="rgba(255,255,255,.5)">Top Up</text>
+        <text x="182" y="252" font-family="Montserrat" font-size="9" fill="rgba(255,255,255,.5)">History</text>
+        <!-- Transactions -->
+        <text x="36" y="302" font-family="Montserrat" font-size="10" font-weight="600" fill="rgba(255,255,255,.6)">Recent Transactions</text>
+        <rect x="24" y="314" width="212" height="48" rx="10" fill="rgba(255,255,255,.05)"/>
+        <circle cx="50" cy="338" r="14" fill="rgba(41,72,255,.3)"/>
+        <text x="72" y="334" font-family="Montserrat" font-size="10" font-weight="600" fill="white">Netflix</text>
+        <text x="72" y="348" font-family="Montserrat" font-size="9" fill="rgba(255,255,255,.45)">Subscription</text>
+        <text x="196" y="338" font-family="Montserrat" font-size="10" font-weight="600" fill="#FF6B6B" text-anchor="end">-Rp 49k</text>
+        <rect x="24" y="368" width="212" height="48" rx="10" fill="rgba(255,255,255,.05)"/>
+        <circle cx="50" cy="392" r="14" fill="rgba(16,185,129,.25)"/>
+        <text x="72" y="388" font-family="Montserrat" font-size="10" font-weight="600" fill="white">Salary</text>
+        <text x="72" y="402" font-family="Montserrat" font-size="9" fill="rgba(255,255,255,.45)">From employer</text>
+        <text x="196" y="392" font-family="Montserrat" font-size="10" font-weight="600" fill="#10B981" text-anchor="end">+Rp 8.5jt</text>
+        <rect x="24" y="422" width="212" height="48" rx="10" fill="rgba(255,255,255,.05)"/>
+        <circle cx="50" cy="446" r="14" fill="rgba(255,137,6,.25)"/>
+        <text x="72" y="442" font-family="Montserrat" font-size="10" font-weight="600" fill="white">GoPay Transfer</text>
+        <text x="72" y="456" font-family="Montserrat" font-size="9" fill="rgba(255,255,255,.45)">P2P Transfer</text>
+        <text x="196" y="446" font-family="Montserrat" font-size="10" font-weight="600" fill="#FF6B6B" text-anchor="end">-Rp 250k</text>
+        <!-- Bottom nav -->
+        <rect x="14" y="482" width="232" height="34" rx="0" fill="rgba(255,255,255,.04)" rx="0 0 28 28"/>
+        <circle cx="65" cy="499" r="4" fill="#2948FF"/>
+        <circle cx="130" cy="499" r="4" fill="rgba(255,255,255,.3)"/>
+        <circle cx="195" cy="499" r="4" fill="rgba(255,255,255,.3)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- BRAND STRIP -->
+  <div class="brand-strip reveal">
+    <span class="brand-strip__label">Trusted by</span>
+    <div class="brand-strip__logos">
+      <div class="brand-logo">VISA</div>
+      <div class="brand-logo">BCA</div>
+      <div class="brand-logo">MANDIRI</div>
+      <div class="brand-logo">OVO</div>
+      <div class="brand-logo">DANA</div>
+      <div class="brand-logo">GoPay</div>
+    </div>
+  </div>
+
+  <!-- ABOUT / FEATURE CARDS -->
+  <section class="about-section">
+    <div class="about-section__copy reveal">
+      <p class="section-label">About The Application</p>
+      <h2 class="section-title">Why Choose Zwallet?</h2>
+      <p class="section-subtitle">We have some great features from the application and it's totally free to use by all users around the world.</p>
+    </div>
+    <div class="feature-cards reveal" style="animation-delay:.1s">
+      <!-- Card 1 -->
+      <div class="feature-card">
+        <div class="feature-card__circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        </div>
+        <div class="feature-card__title">24/7 Support</div>
+        <div class="feature-card__desc">We have 24/7 contact support so you can contact us whenever you want and we will respond promptly.</div>
+      </div>
+      <!-- Card 2 -->
+      <div class="feature-card">
+        <div class="feature-card__circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="feature-card__title">Data Privacy</div>
+        <div class="feature-card__desc">We make sure your data is safe in our database and we will encrypt any data you submit to us.</div>
+      </div>
+      <!-- Card 3 -->
+      <div class="feature-card">
+        <div class="feature-card__circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <div class="feature-card__title">Easy Download</div>
+        <div class="feature-card__desc">Zwallet is 100% free. It's now available on Google Play Store and App Store for everyone.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES (blue background) -->
+  <section class="features-section">
+    <div class="features-section__phone-wrap reveal">
+      <!-- Simplified phone SVG -->
+      <svg class="features-section__phone" viewBox="0 0 220 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="216" height="436" rx="32" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.3)" stroke-width="2"/>
+        <rect x="14" y="14" width="192" height="412" rx="24" fill="rgba(255,255,255,.08)"/>
+        <rect x="80" y="20" width="60" height="12" rx="6" fill="rgba(255,255,255,.15)"/>
+        <rect x="24" y="48" width="172" height="96" rx="16" fill="rgba(255,255,255,.12)"/>
+        <text x="40" y="80" font-family="Montserrat" font-size="10" fill="rgba(255,255,255,.6)">Balance</text>
+        <text x="40" y="104" font-family="Montserrat" font-size="18" font-weight="700" fill="white">Rp 5.280.000</text>
+        <rect x="24" y="158" width="172" height="60" rx="12" fill="rgba(255,255,255,.08)"/>
+        <rect x="24" y="228" width="172" height="60" rx="12" fill="rgba(255,255,255,.08)"/>
+        <rect x="24" y="298" width="172" height="60" rx="12" fill="rgba(255,255,255,.08)"/>
+        <rect x="24" y="368" width="172" height="50" rx="12" fill="rgba(255,255,255,.05)"/>
+      </svg>
+    </div>
+    <div class="features-section__copy reveal" style="animation-delay:.1s">
+      <p class="section-label" style="color:rgba(255,255,255,.7)">Features</p>
+      <h2 class="features-section__title">All The Great Zwallet Features.</h2>
+      <p class="features-section__subtitle">We have some great features from the application and it's totally free to use by all users around the world.</p>
+
+      <div class="feature-item">
+        <div class="feature-item__icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <div>
+          <div class="feature-item__name">Small Fee</div>
+          <div class="feature-item__desc">We only charge 5% of every successful transaction done in the Zwallet app.</div>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-item__icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div>
+          <div class="feature-item__name">Data Secured</div>
+          <div class="feature-item__desc">All your data is secured properly in our system and it's encrypted end-to-end.</div>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-item__icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+        </div>
+        <div>
+          <div class="feature-item__name">User Friendly</div>
+          <div class="feature-item__desc">Zwallet comes with modern and sleek design that's easy and not complicated for everyone.</div>
+        </div>
+      </div>
+
+      <button class="btn-get-started--white" onclick="showPage('page-pin')">
+        Get Started
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="testimonials-section__header reveal">
+      <p class="section-label">Testimonials</p>
+      <h2 class="section-title" style="font-size:42px">Hear From Our Customers</h2>
+      <p class="section-subtitle" style="margin-top:8px">We always do our best for our customers to stay comfortable using the applications we provide.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-card__avatar">SC</div>
+        <div class="testimonial-card__name">Sherina Claw</div>
+        <div class="star-row">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="star-row__score">5.0</span>
+        </div>
+        <div class="testimonial-card__quote">"</div>
+        <div class="testimonial-card__text">I use this app since 2 years ago and this is the best app that I've ever used in my entire life.</div>
+      </div>
+      <div class="testimonial-card reveal" style="animation-delay:.1s">
+        <div class="testimonial-card__avatar">JB</div>
+        <div class="testimonial-card__name">James Bond</div>
+        <div class="star-row">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="star-row__score">5.0</span>
+        </div>
+        <div class="testimonial-card__quote">"</div>
+        <div class="testimonial-card__text">I use Zwallet to manage all financial needs. It's super easy to use and it's a 100% free app.</div>
+      </div>
+      <div class="testimonial-card reveal" style="animation-delay:.2s">
+        <div class="testimonial-card__avatar">UK</div>
+        <div class="testimonial-card__name">Ujang Kayu</div>
+        <div class="star-row">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="star-row__score">5.0</span>
+        </div>
+        <div class="testimonial-card__quote">"</div>
+        <div class="testimonial-card__text">Since I'm using this app, I'm not going to move to another similar app. Thank you Zwallet!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <!-- Brand -->
+      <div>
+        <div class="footer__brand-logo">
+          <div class="footer__brand-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="6" width="22" height="14" rx="3"/><path d="M1 10h22"/><circle cx="17" cy="15" r="1.5" fill="white" stroke="none"/>
+            </svg>
+          </div>
+          <span class="footer__brand-name">Zwallet</span>
+        </div>
+        <p class="footer__brand-desc">Clarity gives you the blocks and components you need to create a truly professional website.</p>
+        <div class="footer__social">
+          <!-- Twitter -->
+          <div class="social-btn" onclick="showToast('Twitter/X')">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </div>
+          <!-- Facebook -->
+          <div class="social-btn" onclick="showToast('Facebook')">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </div>
+          <!-- Instagram -->
+          <div class="social-btn" onclick="showToast('Instagram')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2948FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <!-- GitHub -->
+          <div class="social-btn" onclick="showToast('GitHub')">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <div class="footer__col-title">Company</div>
+        <div class="footer__contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l1-1a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +62 5637 8882 9901
+        </div>
+        <div class="footer__contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          contact@zwallet.com
+        </div>
+      </div>
+
+      <!-- Social links -->
+      <div>
+        <div class="footer__col-title">Follow Us</div>
+        <div class="footer__contact-row" style="cursor:pointer" onclick="showToast('Twitter/X')">
+          <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231z"/></svg>
+          Twitter / X
+        </div>
+        <div class="footer__contact-row" style="cursor:pointer" onclick="showToast('Facebook')">
+          <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          Facebook
+        </div>
+        <div class="footer__contact-row" style="cursor:pointer" onclick="showToast('Instagram')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg>
+          Instagram
+        </div>
+        <div class="footer__contact-row" style="cursor:pointer" onclick="showToast('GitHub')">
+          <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <div class="footer__col-title">Newsletter</div>
+        <div class="footer__newsletter-input">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <input type="email" placeholder="Enter your email" id="newsletter-email"/>
+        </div>
+        <button class="btn-subscribe" onclick="handleSubscribe()">Subscribe</button>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      &copy; 2024 Zwallet. All rights reserved. Built with ❤️ for your financial freedom.
+    </div>
+  </footer>
+
+</div><!-- end page-landing -->
+
+
+<!-- ===========================
+     PAGE 2: ENTER PIN
+=========================== -->
+<div class="page" id="page-pin">
+  <div class="pin-page">
+
+    <!-- Left white panel -->
+    <div class="pin-page__left">
+      <div class="pin-form">
+
+        <span class="back-link" onclick="showPage('page-landing')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Back
+        </span>
+
+        <!-- Logo -->
+        <div class="pin-form__logo">
+          <div class="pin-form__logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="6" width="22" height="14" rx="3"/><path d="M1 10h22"/><circle cx="17" cy="15" r="1.5" fill="white" stroke="none"/>
+            </svg>
+          </div>
+          <span class="pin-form__logo-text">Zwallet</span>
+        </div>
+
+        <h1 class="pin-form__title">Enter Your Pin 👋</h1>
+        <p class="pin-form__subtitle">Please save your pin because this is very important for account security.</p>
+
+        <!-- PIN dots display -->
+        <div class="pin-dots" id="pin-dots">
+          <div class="pin-dot active" id="dot-0"></div>
+          <div class="pin-dot" id="dot-1"></div>
+          <div class="pin-dot" id="dot-2"></div>
+          <div class="pin-dot" id="dot-3"></div>
+          <div class="pin-dot" id="dot-4"></div>
+          <div class="pin-dot" id="dot-5"></div>
+        </div>
+
+        <!-- Numpad -->
+        <div class="numpad" id="numpad">
+          <button class="numpad-key" onclick="pinInput('1')">1</button>
+          <button class="numpad-key" onclick="pinInput('2')">2</button>
+          <button class="numpad-key" onclick="pinInput('3')">3</button>
+          <button class="numpad-key" onclick="pinInput('4')">4</button>
+          <button class="numpad-key" onclick="pinInput('5')">5</button>
+          <button class="numpad-key" onclick="pinInput('6')">6</button>
+          <button class="numpad-key" onclick="pinInput('7')">7</button>
+          <button class="numpad-key" onclick="pinInput('8')">8</button>
+          <button class="numpad-key" onclick="pinInput('9')">9</button>
+          <button class="numpad-key numpad-key--empty"></button>
+          <button class="numpad-key" onclick="pinInput('0')">0</button>
+          <button class="numpad-key numpad-key--delete" onclick="pinDelete()">⌫</button>
+        </div>
+
+        <button class="btn-submit-pin" id="btn-submit-pin" onclick="pinSubmit()" disabled>Submit</button>
+
+        <p class="pin-form__forgot">Forgot Your Pin? <a onclick="showToast('Reset PIN link sent to your email!')">Reset</a></p>
+
+      </div>
+    </div>
+
+    <!-- Right blue panel -->
+    <div class="pin-page__right">
+      <!-- Decorative illustration -->
+      <svg class="pin-page__illustration" viewBox="0 0 480 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- floating card -->
+        <rect x="60" y="60" width="360" height="220" rx="28" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
+        <text x="96" y="110" font-family="Montserrat" font-size="13" fill="rgba(255,255,255,.6)">Total Balance</text>
+        <text x="96" y="148" font-family="Montserrat" font-size="32" font-weight="700" fill="white">Rp 5.280.000</text>
+        <circle cx="376" cy="104" r="28" fill="rgba(255,255,255,.1)"/>
+        <circle cx="376" cy="104" r="16" fill="rgba(255,255,255,.15)"/>
+        <rect x="96" y="180" width="120" height="8" rx="4" fill="rgba(255,255,255,.15)"/>
+        <rect x="96" y="200" width="80" height="8" rx="4" fill="rgba(255,255,255,.1)"/>
+        <text x="96" y="246" font-family="Montserrat" font-size="18" font-weight="600" letter-spacing="3" fill="rgba(255,255,255,.6)">•••• •••• •••• 3291</text>
+        <!-- lock icon -->
+        <circle cx="240" cy="370" r="70" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
+        <rect x="214" y="360" width="52" height="40" rx="8" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+        <path d="M222 360V348a18 18 0 0 1 36 0v12" stroke="rgba(255,255,255,.5)" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="240" cy="380" r="5" fill="white"/>
+        <!-- dots decoration -->
+        <circle cx="100" cy="440" r="6" fill="rgba(255,255,255,.2)"/>
+        <circle cx="130" cy="460" r="4" fill="rgba(255,255,255,.15)"/>
+        <circle cx="360" cy="430" r="5" fill="rgba(255,255,255,.2)"/>
+        <circle cx="390" cy="455" r="8" fill="rgba(255,255,255,.1)"/>
+      </svg>
+    </div>
+
+  </div>
+</div><!-- end page-pin -->
+
+
+<script>
+  /* ============================================================
+     PAGE NAVIGATION
+  ============================================================ */
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+    if (id === 'page-pin') resetPin();
+  }
+
+  /* ============================================================
+     TOAST
+  ============================================================ */
+  let toastTimer;
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  /* ============================================================
+     PIN LOGIC
+  ============================================================ */
+  let pin = [];
+  const PIN_LENGTH = 6;
+
+  function updateDots() {
+    for (let i = 0; i < PIN_LENGTH; i++) {
+      const dot = document.getElementById('dot-' + i);
+      dot.classList.remove('filled', 'active');
+      if (i < pin.length) { dot.classList.add('filled'); dot.textContent = '•'; }
+      else { dot.textContent = ''; }
+      if (i === pin.length) dot.classList.add('active');
+    }
+    document.getElementById('btn-submit-pin').disabled = pin.length < PIN_LENGTH;
+  }
+
+  function pinInput(digit) {
+    if (pin.length < PIN_LENGTH) {
+      pin.push(digit);
+      updateDots();
+    }
+  }
+
+  function pinDelete() {
+    if (pin.length > 0) { pin.pop(); updateDots(); }
+  }
+
+  function resetPin() { pin = []; updateDots(); }
+
+  function pinSubmit() {
+    if (pin.length < PIN_LENGTH) return;
+    showToast('✅ PIN verified! Welcome to Zwallet.');
+    setTimeout(() => { resetPin(); showPage('page-landing'); }, 1600);
+  }
+
+  // Keyboard support for PIN
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('page-pin').classList.contains('active')) return;
+    if (/^[0-9]$/.test(e.key)) pinInput(e.key);
+    else if (e.key === 'Backspace') pinDelete();
+    else if (e.key === 'Enter') pinSubmit();
+  });
+
+  /* ============================================================
+     NEWSLETTER
+  ============================================================ */
+  function handleSubscribe() {
+    const email = document.getElementById('newsletter-email').value.trim();
+    if (!email || !email.includes('@')) { showToast('⚠️ Please enter a valid email.'); return; }
+    showToast('🎉 Subscribed! Thanks for joining Zwallet.');
+    document.getElementById('newsletter-email').value = '';
+  }
+
+  /* ============================================================
+     SCROLL REVEAL
+  ============================================================ */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
