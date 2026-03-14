@@ -493,7 +493,9 @@ textarea:focus {
   align-items: center;
   justify-content: center;
   z-index: 99;
+  -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
+
   animation: fadeIn 0.2s ease;
 }
 
