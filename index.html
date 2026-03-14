@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E-Wallet Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@600&display=swap" rel="stylesheet">
-    <link href="css/dashboard.css" rel="stylesheet">
-
-
-
+  <link href="css/dashboard.css" rel="stylesheet">
 </head>
 <body>
 
@@ -27,7 +24,7 @@
     <div class="header-right">
       <span class="header-name">Halo, Budi Santoso</span>
       <div class="user-dropdown" id="userDropdown">
-        <div class="user-dropdown-trigger" onclick="toggleUserDropdown()">
+        <div class="user-dropdown-trigger">
           <div class="avatar">BS</div>
           <div class="chevron-down" id="userChevron">
             <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
@@ -59,7 +56,6 @@
   <!-- SIDENAV -->
   <nav class="sidenav">
     <div class="sidenav-items">
-
       <a class="nav-item active" href="#">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <rect x="3" y="3" width="7" height="7" rx="1"/>
@@ -69,15 +65,13 @@
         </svg>
         Dashboard
       </a>
-
-      <a class="nav-item" href="#">
+      <a class="nav-item" href="index2.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M22 2L11 13"/>
           <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
         </svg>
         Transfer
       </a>
-
       <a class="nav-item" href="#">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <circle cx="12" cy="12" r="10"/>
@@ -85,7 +79,6 @@
         </svg>
         Riwayat
       </a>
-
       <a class="nav-item" href="#">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
@@ -94,7 +87,6 @@
         </svg>
         Upload
       </a>
-
       <a class="nav-item" href="#">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
@@ -104,10 +96,8 @@
         </svg>
         Pengguna
       </a>
-
     </div>
-
-    <div class="nav-logout-wrapper">
+    <div>
       <div class="nav-logout">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
@@ -120,8 +110,10 @@
   </nav>
 
   <!-- MAIN -->
-  <main>
+  <main class="dashboard">
+
     <section class="left-col">
+
       <!-- STAT CARDS -->
       <div class="stat-cards">
 
@@ -217,11 +209,9 @@
             </button>
           </div>
         </div>
-
-        <div>
-          <canvas id="myChart"></canvas>
-        </div>
+        <canvas id="myChart"></canvas>
       </div>
+
     </section>
 
     <!-- RIGHT SIDEBAR -->
@@ -312,71 +302,42 @@
 
       </div>
     </aside>
+
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
   <script>
-    function toggleUserDropdown() {
-      const menu = document.getElementById('userDropdownMenu');
-      const chevron = document.getElementById('userChevron');
-      const isOpen = menu.classList.toggle('open');
-      chevron.style.transform = isOpen ? 'rotate(180deg)' : '';
-      if (isOpen) document.addEventListener('click', closeUserDropdownOutside);
-    }
-
-    function closeUserDropdownOutside(e) {
-      const dd = document.getElementById('userDropdown');
-      if (!dd.contains(e.target)) {
-        document.getElementById('userDropdownMenu').classList.remove('open');
-        document.getElementById('userChevron').style.transform = '';
-        document.removeEventListener('click', closeUserDropdownOutside);
-      }
-    }
-
-
-
-      const ctx = document.getElementById('myChart');
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['sat', 'sunday', 'monday', 'tue', 'wed', 'thu','fri'],
-      datasets: [{
-        backgroundColor : "blue",
-        data: [14000, 2000, 94000, 30000, 43000, 22000, 15000],
-        borderWidth: 1
-      }]
-    },
-    options: {
-          plugins: {
-      legend: { display: false },
-        },
-
-      scales: {
-        y: {
-          grid: {
-          drawTicks: true,        // This keeps the little dash next to the number
-          color: '#000000',       // Color of the dash
-        },
-        ticks: {
-          padding: 10,            // Adds space between the number and the dash
-          stepSize: 25000, // This creates the 25k increments
-          callback: function(value) {
-            return value;
+    new Chart(document.getElementById('myChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Sab', 'Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum'],
+        datasets: [{
+          backgroundColor: '#2948FF',
+          borderRadius: 6,
+          data: [14000, 2000, 94000, 30000, 43000, 22000, 15000],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: '#f0f0f0' },
+            ticks: {
+              stepSize: 25000,
+              callback: v => (v / 1000) + 'k',
+              font: { family: 'Montserrat', size: 11 }
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { font: { family: 'Montserrat', size: 11 } }
           }
-        },
-          beginAtZero: true
-        },
-        x: {
-        grid: {
-          display: false          // Usually looks better to hide x-axis grid too
         }
       }
-      }
-    }
-  });
-
+    });
   </script>
+
 </body>
 </html>
