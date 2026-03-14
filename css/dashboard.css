@@ -934,3 +934,52 @@ main.dashboard {
 }
 
 .pt-star.active { color: #f4b942; }
+
+.pin-input-group {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    margin: 28px 0 32px;
+    justify-content: space-between;
+
+    & input[type="text"] {
+        flex: 1;
+        min-width: 0;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid var(--color-border-pin);
+        outline: none;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 4px 0 8px;
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 600;
+        font-family: 'Roboto', sans-serif;
+        color: var(--color-text-heading);
+        transition: border-color 0.2s ease;
+        caret-color: var(--color-primary);
+
+        &:focus {
+            border-bottom: 2px solid var(--color-primary);
+            outline: none;
+            box-shadow: none;
+        }
+
+        &:not(:placeholder-shown) {
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        &::placeholder {
+            color: transparent;
+        }
+    }
+}
+.login-form {
+    margin-top: 8px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+

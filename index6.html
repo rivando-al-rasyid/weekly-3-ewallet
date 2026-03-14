@@ -189,13 +189,28 @@
     <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
       <div class="modal-title">TRANSFER TO GHALUH 1</div>
+            <h2 class="modal-success-heading">Enter Your Pin 👋 </h2>
+      <p class="modal-success-sub">Enter Your Pin For Transaction</p>
+
       <div >
-        <img src="assets/image4.png" alt="" class='modal-illustration'>
+                  <form action="#" method="post" class="login-form">
+                    <div class="pin-input-group">
+                        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="0" required autofocus>
+                        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="0" required>
+                        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="0" required>
+                        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="0" required>
+                        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="0" required>
+                        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="0" required>
+                    </div>
+
+                    <button type="submit" class="modal-btn-done">Submit</button>
+                    <div class="center">
+                        Forgot Your PIN? <a href="reset.html" class="brand" style="font-size:0.875rem;">Reset</a>
+                    </div>
+                </form>
+
       </div>
-      <h2 class="modal-failed-heading">Oops Transfer <span>Failed</span></h2>
-      <p class="modal-success-sub">Sorry Theres is an issue for your transfer, try again later !</p>
-      <button class="modal-btn-done">Try Again</button>
-      <button class="modal-btn-back">Back To Dashboard</button>
+
 
     </div>
   </main>
