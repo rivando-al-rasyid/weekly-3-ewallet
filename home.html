@@ -7,1216 +7,250 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@600&family=Plus+Jakarta+Sans:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    /* === RESET & BASE === */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #fff;
-      color: #0B132A;
-      overflow-x: hidden;
-    }
-
-    /* === CSS VARIABLES === */
-    :root {
-      --blue: #2948FF;
-      --blue-light: #4A88FF;
-      --dark: #0B132A;
-      --gray: #4F5665;
-      --green: #00A700;
-      --bg-subtle: rgba(232,232,232,0.3);
-      --white: #fff;
-    }
-
-    /* === ANIMATIONS === */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(32px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-12px); }
-    }
-    @keyframes pulse-ring {
-      0%   { transform: scale(1);   opacity: 0.6; }
-      100% { transform: scale(1.7); opacity: 0; }
-    }
-    @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-40px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(40px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-
-    .anim-fadeup   { animation: fadeUp 0.7s ease both; }
-    .anim-fadein   { animation: fadeIn 0.7s ease both; }
-    .d1 { animation-delay: 0.1s; }
-    .d2 { animation-delay: 0.25s; }
-    .d3 { animation-delay: 0.4s; }
-    .d4 { animation-delay: 0.55s; }
-    .d5 { animation-delay: 0.7s; }
-
-    /* === NAVBAR === */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 80px;
-      height: 76px;
-      background: var(--blue);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 20px rgba(41,72,255,0.3);
-    }
-    .navbar__logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-    .navbar__logo-icon {
-      width: 36px;
-      height: 36px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .navbar__logo-icon svg { width: 22px; height: 22px; fill: #fff; }
-    .navbar__logo-text {
-      font-family: 'Nunito Sans', sans-serif;
-      font-weight: 600;
-      font-size: 22px;
-      color: #fff;
-    }
-    .navbar__links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-    .navbar__links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .navbar__links a:hover { color: #fff; }
-    .navbar__cta {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .btn-signin {
-      padding: 10px 20px;
-      border: 1.5px solid rgba(255,255,255,0.7);
-      border-radius: 6px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 13px;
-      letter-spacing: 0.5px;
-      color: #fff;
-      background: transparent;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
-      text-decoration: none;
-    }
-    .btn-signin:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
-    .btn-signup {
-      padding: 10px 22px;
-      background: #fff;
-      border-radius: 6px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      letter-spacing: 0.5px;
-      color: var(--blue);
-      border: none;
-      cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
-      text-decoration: none;
-    }
-    .btn-signup:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
-
-    /* === HERO === */
-    .hero {
-      background: var(--blue);
-      padding: 80px 80px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 40px;
-      position: relative;
-      overflow: hidden;
-      min-height: 560px;
-    }
-    /* decorative circles */
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: rgba(74,136,255,0.35);
-      top: -180px; right: -100px;
-      pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      background: rgba(74,136,255,0.2);
-      bottom: 0; left: 40%;
-      pointer-events: none;
-    }
-
-    .hero__text {
-      flex: 1;
-      max-width: 520px;
-      padding-bottom: 80px;
-      position: relative;
-      z-index: 2;
-    }
-    .hero__badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-    .hero__title {
-      font-size: clamp(36px, 4vw, 58px);
-      font-weight: 700;
-      line-height: 1.15;
-      color: #fff;
-      margin-bottom: 20px;
-    }
-    .hero__title span {
-      position: relative;
-      display: inline-block;
-    }
-    .hero__title span::after {
-      content: '';
-      position: absolute;
-      bottom: 4px; left: 0;
-      width: 100%; height: 4px;
-      background: rgba(255,255,255,0.4);
-      border-radius: 2px;
-    }
-    .hero__subtitle {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 36px;
-      max-width: 420px;
-    }
-    .hero__store-buttons {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 48px;
-      flex-wrap: wrap;
-    }
-    .btn-store {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 22px;
-      border-radius: 8px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.2s;
-    }
-    .btn-store:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-    .btn-store--white { background: #fff; color: var(--blue); border: none; }
-    .btn-store--outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.6); }
-    .btn-store svg { width: 22px; height: 22px; flex-shrink: 0; }
-
-    .hero__stats {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .hero__avatars {
-      display: flex;
-    }
-    .hero__avatar {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      border: 2.5px solid #fff;
-      margin-right: -14px;
-      background: rgba(255,255,255,0.25);
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .hero__avatar:last-child { margin-right: 0; }
-    .hero__avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .hero__stat-text {
-      padding-left: 18px;
-    }
-    .hero__stat-num {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 700;
-      font-size: 28px;
-      color: #fff;
-      line-height: 1;
-    }
-    .hero__stat-label {
-      font-size: 12px;
-      color: rgba(255,255,255,0.7);
-      margin-top: 3px;
-    }
-
-    .hero__phones {
-      position: relative;
-      width: 420px;
-      height: 480px;
-      flex-shrink: 0;
-      z-index: 2;
-      align-self: flex-end;
-    }
-    .hero__phone {
-      position: absolute;
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 -12px 60px rgba(0,0,0,0.3);
-    }
-    .hero__phone--main {
-      width: 230px;
-      height: 460px;
-      left: 0;
-      bottom: 0;
-      animation: float 5s ease-in-out infinite;
-      background: #1a1a2e;
-    }
-    .hero__phone--secondary {
-      width: 170px;
-      height: 340px;
-      right: 0;
-      bottom: 60px;
-      animation: float 5s ease-in-out infinite 0.8s;
-      background: #16213e;
-    }
-    /* Phone screen mockup */
-    .phone-screen {
-      width: 100%; height: 100%;
-      background: linear-gradient(160deg, #1c2a6e 0%, #0d1b4b 100%);
-      display: flex;
-      flex-direction: column;
-      padding: 24px 16px 16px;
-    }
-    .phone-status { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .phone-time { font-size: 11px; color: rgba(255,255,255,0.6); font-family: 'Plus Jakarta Sans'; }
-    .phone-dots { display: flex; gap: 4px; }
-    .phone-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.4); }
-    .phone-greeting { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
-    .phone-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 18px; }
-    .phone-balance-card {
-      background: linear-gradient(135deg, #3a5aff, #6a3aff);
-      border-radius: 14px;
-      padding: 16px;
-      margin-bottom: 16px;
-    }
-    .phone-balance-label { font-size: 10px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
-    .phone-balance-num { font-size: 20px; font-weight: 700; color: #fff; font-family: 'Plus Jakarta Sans'; }
-    .phone-balance-num span { font-size: 12px; font-weight: 400; opacity: 0.7; }
-    .phone-actions { display: flex; gap: 8px; margin-bottom: 16px; }
-    .phone-action {
-      flex: 1;
-      background: rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 10px 6px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-    .phone-action-icon { font-size: 16px; }
-    .phone-action-text { font-size: 9px; color: rgba(255,255,255,0.6); }
-    .phone-txn-title { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
-    .phone-txn { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-    .phone-txn-icon { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
-    .phone-txn-info { flex: 1; }
-    .phone-txn-name { font-size: 10px; color: #fff; font-weight: 500; }
-    .phone-txn-date { font-size: 9px; color: rgba(255,255,255,0.4); }
-    .phone-txn-amount { font-size: 11px; font-weight: 600; }
-    .phone-txn-amount.green { color: #4ade80; }
-    .phone-txn-amount.red { color: #f87171; }
-
-    /* Small phone */
-    .phone-screen--sm { padding: 16px 12px; }
-    .phone-mini-card {
-      background: linear-gradient(135deg, #2948ff, #4a88ff);
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 12px;
-    }
-    .phone-mini-label { font-size: 9px; color: rgba(255,255,255,0.6); margin-bottom: 3px; }
-    .phone-mini-num { font-size: 16px; font-weight: 700; color: #fff; font-family: 'Plus Jakarta Sans'; }
-    .phone-chart { display: flex; align-items: flex-end; gap: 5px; height: 50px; margin-top: 10px; }
-    .phone-bar { flex: 1; border-radius: 4px 4px 0 0; background: rgba(255,255,255,0.15); }
-    .phone-bar.active { background: #fff; }
-
-    /* === FEATURES BAR === */
-    .features-bar {
-      background: #fff;
-      padding: 48px 80px;
-      display: flex;
-      justify-content: center;
-    }
-    .features-bar__inner {
-      display: flex;
-      gap: 24px;
-      max-width: 1180px;
-      width: 100%;
-    }
-    .feature-chip {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: #fff;
-      border-radius: 16px;
-      padding: 24px 28px;
-      box-shadow: 0 2px 20px rgba(41,72,255,0.08);
-      border: 1px solid rgba(41,72,255,0.08);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .feature-chip:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(41,72,255,0.14); }
-    .feature-chip__icon {
-      width: 54px; height: 54px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #2948ff, #4a88ff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .feature-chip__icon svg { width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .feature-chip__text h3 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-    .feature-chip__text p { font-size: 13px; font-weight: 400; color: var(--gray); line-height: 1.5; }
-
-    /* === ABOUT === */
-    .about {
-      padding: 100px 80px;
-      display: flex;
-      align-items: center;
-      gap: 80px;
-      max-width: 1440px;
-      margin: 0 auto;
-    }
-    .about__text { flex: 1; max-width: 480px; }
-    .about__eyebrow {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 16px;
-    }
-    .about__heading {
-      font-size: clamp(28px, 3vw, 36px);
-      font-weight: 600;
-      line-height: 1.25;
-      color: var(--dark);
-      margin-bottom: 20px;
-    }
-    .about__body {
-      font-size: 15px;
-      line-height: 1.8;
-      color: var(--gray);
-      margin-bottom: 36px;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      background: var(--blue);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.2s;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(41,72,255,0.35); }
-    .btn-primary svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* Stats card */
-    .about__card {
-      flex: 1;
-      max-width: 580px;
-      background: var(--blue);
-      border-radius: 20px;
-      padding: 40px;
-      position: relative;
-      overflow: hidden;
-      min-height: 320px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-    .about__card::before {
-      content: '';
-      position: absolute;
-      width: 280px; height: 280px;
-      background: rgba(74,136,255,0.5);
-      border-radius: 50%;
-      top: -80px; right: -80px;
-    }
-    .about__card::after {
-      content: '';
-      position: absolute;
-      width: 200px; height: 200px;
-      background: rgba(74,136,255,0.3);
-      border-radius: 50%;
-      bottom: -60px; left: -60px;
-    }
-    .about__card-grid {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .stat-box {
-      background: rgba(255,255,255,0.12);
-      border-radius: 14px;
-      padding: 20px;
-      border: 1px solid rgba(255,255,255,0.15);
-      backdrop-filter: blur(4px);
-    }
-    .stat-box__num {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 32px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .stat-box__label { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.4; }
-
-    /* === FEATURES DETAIL === */
-    .features-detail {
-      background: var(--bg-subtle);
-      padding: 100px 80px;
-    }
-    .features-detail__inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 80px;
-    }
-    .features-detail__visual {
-      flex-shrink: 0;
-      width: 420px;
-      height: 420px;
-      position: relative;
-    }
-    .features-detail__circle {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #e8eeff 0%, #d0d9ff 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .features-detail__phone-wrap {
-      width: 200px;
-      animation: float 6s ease-in-out infinite;
-    }
-    .features-detail__phone-img {
-      width: 200px;
-      height: 360px;
-      background: #1a1a2e;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(41,72,255,0.3);
-    }
-    /* orbiting dots */
-    .orbit-dot {
-      position: absolute;
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 4px 20px rgba(41,72,255,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-    }
-    .orbit-dot:nth-child(1) { top: 10%; right: 5%; }
-    .orbit-dot:nth-child(2) { bottom: 15%; right: 8%; }
-    .orbit-dot:nth-child(3) { top: 15%; left: 2%; }
-
-    .features-detail__content { flex: 1; }
-    .features-detail__heading {
-      font-size: clamp(26px, 2.5vw, 34px);
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 16px;
-    }
-    .features-detail__body {
-      font-size: 15px;
-      line-height: 1.75;
-      color: var(--gray);
-      margin-bottom: 32px;
-    }
-    .check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
-    .check-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--green);
-    }
-    .check-item__icon {
-      width: 26px; height: 26px;
-      border-radius: 50%;
-      background: var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .check-item__icon svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* === PARTNERS === */
-    .partners {
-      padding: 80px 80px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 48px;
-    }
-    .partners__heading { font-size: 34px; font-weight: 600; color: var(--dark); text-align: center; }
-    .partners__sub { font-size: 15px; color: var(--gray); text-align: center; max-width: 400px; }
-    .partners__logos {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .partner-tile {
-      width: 100px; height: 80px;
-      border-radius: 16px;
-      border: 1.5px solid #eee;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fafafa;
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    }
-    .partner-tile:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-color: #ddd; }
-    .partner-tile svg { width: 44px; height: 44px; opacity: 0.4; }
-
-    /* === TESTIMONIALS === */
-    .testimonials {
-      padding: 100px 80px;
-      background: var(--bg-subtle);
-    }
-    .testimonials__header { text-align: center; margin-bottom: 56px; }
-    .testimonials__heading { font-size: 34px; font-weight: 600; color: var(--dark); margin-bottom: 12px; }
-    .testimonials__sub { font-size: 15px; color: var(--gray); }
-
-    .testimonials__track-wrap { position: relative; }
-    .testimonial-card {
-      background: var(--blue);
-      border-radius: 20px;
-      padding: 48px 56px;
-      max-width: 760px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
-      text-align: center;
-      box-shadow: 0 12px 40px rgba(41,72,255,0.25);
-      position: relative;
-      overflow: hidden;
-    }
-    .testimonial-card::before {
-      content: '';
-      position: absolute;
-      width: 220px; height: 220px;
-      background: rgba(74,136,255,0.3);
-      border-radius: 50%;
-      top: -80px; left: -60px;
-    }
-    .testimonial-card::after {
-      content: '';
-      position: absolute;
-      width: 160px; height: 160px;
-      background: rgba(74,136,255,0.25);
-      border-radius: 50%;
-      bottom: -60px; right: -40px;
-    }
-    .testimonial-card > * { position: relative; z-index: 2; }
-    .testimonial-avatar {
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      border: 3px solid rgba(255,255,255,0.4);
-      background: rgba(255,255,255,0.2);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .testimonial-avatar svg { width: 36px; height: 36px; fill: rgba(255,255,255,0.6); }
-    .testimonial-name { font-size: 18px; font-weight: 700; color: #fff; }
-    .testimonial-stars { display: flex; gap: 4px; }
-    .testimonial-stars span { color: #FF8906; font-size: 16px; }
-    .testimonial-rating { font-size: 14px; color: rgba(255,255,255,0.7); margin-left: 8px; }
-    .testimonial-quote { font-size: 56px; line-height: 0.5; color: rgba(255,255,255,0.5); font-family: Georgia, serif; }
-    .testimonial-text { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.9); max-width: 600px; }
-
-    .testimonials__nav { display: flex; justify-content: center; gap: 16px; margin-top: 32px; }
-    .nav-btn {
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.15s;
-    }
-    .nav-btn:hover { transform: scale(1.08); }
-    .nav-btn--prev { background: rgba(232,232,232,0.6); }
-    .nav-btn--next { background: var(--blue); }
-    .nav-btn svg { width: 18px; height: 18px; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-    .nav-btn--prev svg { stroke: var(--dark); }
-    .nav-btn--next svg { stroke: #fff; }
-
-    /* === DOWNLOAD CTA === */
-    .download {
-      background: var(--bg-subtle);
-      padding: 100px 80px;
-      display: flex;
-      align-items: center;
-      gap: 80px;
-      max-width: 1440px;
-      margin: 0 auto;
-    }
-    .download__phones {
-      flex-shrink: 0;
-      position: relative;
-      width: 380px;
-      height: 420px;
-    }
-    .download__phone {
-      position: absolute;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 -8px 40px rgba(0,0,0,0.2);
-    }
-    .download__phone--main {
-      width: 220px; height: 420px;
-      left: 0; bottom: 0;
-      animation: float 5.5s ease-in-out infinite;
-      background: #1a1a2e;
-    }
-    .download__phone--secondary {
-      width: 160px; height: 300px;
-      right: 0; bottom: 60px;
-      animation: float 5.5s ease-in-out infinite 1s;
-      background: #16213e;
-    }
-    .download__content { flex: 1; }
-    .download__heading { font-size: 34px; font-weight: 600; color: var(--dark); margin-bottom: 16px; }
-    .download__body { font-size: 15px; line-height: 1.8; color: var(--gray); margin-bottom: 36px; }
-    .download__buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn-dl-primary {
-      display: flex; align-items: center; gap: 10px;
-      padding: 13px 24px; background: var(--blue); color: #fff;
-      border-radius: 8px; border: none; cursor: pointer;
-      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 14px;
-      text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.2s;
-    }
-    .btn-dl-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(41,72,255,0.35); }
-    .btn-dl-outline {
-      display: flex; align-items: center; gap: 10px;
-      padding: 12px 24px; background: transparent; color: var(--blue);
-      border: 1.5px solid var(--blue); border-radius: 8px; cursor: pointer;
-      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 14px;
-      text-decoration: none;
-      transition: transform 0.15s, background 0.2s;
-    }
-    .btn-dl-outline:hover { transform: translateY(-2px); background: rgba(41,72,255,0.05); }
-    .btn-dl-primary svg, .btn-dl-outline svg { width: 22px; height: 22px; fill: none; stroke-width: 0; }
-
-    /* === FOOTER === */
-    footer {
-      background: var(--blue);
-      padding: 64px 80px 32px;
-      color: #fff;
-    }
-    .footer__top {
-      display: grid;
-      grid-template-columns: 280px 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      margin-bottom: 32px;
-    }
-    .footer__brand .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-    .footer__brand .logo-icon {
-      width: 44px; height: 44px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .footer__brand .logo-icon svg { width: 26px; height: 26px; fill: #fff; }
-    .footer__brand .logo-text { font-family: 'Nunito Sans', sans-serif; font-weight: 600; font-size: 26px; color: #fff; }
-    .footer__brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.7); }
-
-    .footer__col h4 { font-size: 13px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
-    .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer__col ul li a { font-size: 14px; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
-    .footer__col ul li a:hover { color: #fff; }
-
-    .footer__contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-    .footer__contact-item svg { width: 18px; height: 18px; stroke: rgba(255,255,255,0.6); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
-    .footer__contact-item span { font-size: 14px; color: rgba(255,255,255,0.8); font-weight: 500; }
-
-    .footer__social { display: flex; gap: 12px; margin-top: 6px; }
-    .social-icon {
-      width: 40px; height: 40px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .social-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
-    .social-icon svg { width: 18px; height: 18px; fill: #fff; }
-
-    .footer__email-input-wrap { display: flex; flex-direction: column; gap: 10px; }
-    .footer__email-input {
-      padding: 11px 14px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .footer__email-input::placeholder { color: rgba(255,255,255,0.4); }
-    .footer__email-input:focus { border-color: rgba(255,255,255,0.6); }
-    .btn-subscribe {
-      padding: 11px;
-      background: #fff;
-      color: var(--blue);
-      border: none;
-      border-radius: 8px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.2s;
-    }
-    .btn-subscribe:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
-
-    .footer__bottom { display: flex; justify-content: center; }
-    .footer__copyright { font-size: 13px; color: rgba(255,255,255,0.55); }
-
-    /* === RESPONSIVE (basic) === */
-    @media (max-width: 1024px) {
-      .navbar { padding: 0 32px; }
-      .navbar__links { display: none; }
-      .hero { flex-direction: column; padding: 60px 32px 0; min-height: auto; }
-      .hero__phones { width: 100%; height: 320px; align-self: center; }
-      .hero__phone--main { width: 160px; height: 300px; }
-      .hero__phone--secondary { width: 120px; height: 220px; }
-      .features-bar { padding: 32px; }
-      .features-bar__inner { flex-direction: column; }
-      .about { flex-direction: column; padding: 64px 32px; }
-      .about__card { max-width: 100%; }
-      .features-detail { padding: 64px 32px; }
-      .features-detail__inner { flex-direction: column; }
-      .features-detail__visual { width: 300px; height: 300px; align-self: center; }
-      .partners { padding: 64px 32px; }
-      .testimonials { padding: 64px 32px; }
-      .download { flex-direction: column; padding: 64px 32px; }
-      .download__phones { align-self: center; }
-      footer { padding: 48px 32px 24px; }
-      .footer__top { grid-template-columns: 1fr 1fr; }
-    }
-  </style>
 </head>
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar">
-    <a class="navbar__logo" href="#">
-      <div class="navbar__logo-icon">
-        <svg viewBox="0 0 24 24"><path d="M21 7H3a1 1 0 00-1 1v12a1 1 0 001 1h18a1 1 0 001-1V8a1 1 0 00-1-1zM1 5a2 2 0 012-2h18a2 2 0 012 2v1H1V5z"/></svg>
-      </div>
-      <span class="navbar__logo-text">E-Wallet</span>
+  <nav>
+    <a href="#">
+
+      E-Wallet
     </a>
-    <ul class="navbar__links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#partners">Partners</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
-    </ul>
-    <div class="navbar__cta">
-      <a class="btn-signin" href="#">Sign In</a>
-      <a class="btn-signup" href="#">Sign Up</a>
+    <div>
+      <a href="#">Sign In</a>
+      <a href="#">Sign Up</a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero__text anim-fadeup d1">
-      <div class="hero__badge">🚀 The Future of Payments</div>
-      <h1 class="hero__title">
-        Experience the Future of <span>Digital Payments</span> with E-Wallet
-      </h1>
-      <p class="hero__subtitle">
-        Say goodbye to cash and hello to fast, secure, and convenient digital transactions — right at your fingertips.
-      </p>
-      <div class="hero__store-buttons">
-        <a class="btn-store btn-store--white" href="#">
-          <!-- Google Play icon -->
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M3.18 1.22A1 1 0 002 2.16v19.68a1 1 0 001.18 1l12.26-9.84L3.18 1.22z" fill="#00BEFF"/>
-            <path d="M16.5 10l-2.94-2.35-10.38-8.33L17.82 8.5 16.5 10z" fill="#FFE000"/>
-            <path d="M16.5 14l1.32 1.5L3.18 22.78l10.38-8.33L16.5 14z" fill="#FF3A44"/>
-            <path d="M13.56 12l2.94-2L17.82 8.5l-1.7 3.5 1.7 3.5-1.32-1.5L13.56 12z" fill="#32A071"/>
-          </svg>
+  <header>
+    <article>
+      <p>🚀 The Future of Payments</p>
+      <h1>Experience the Future of <span>Digital Payments</span> with E-Wallet</h1>
+      <p>Say goodbye to cash and hello to fast, secure, and convenient digital transactions — right at your fingertips.</p>
+      <nav>
+
+        <a href="#">
+
           Play Store
         </a>
-        <a class="btn-store btn-store--outline" href="#">
-          <!-- Apple icon -->
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-          </svg>
+        <a href="#">
+
           App Store
         </a>
-      </div>
-      <div class="hero__stats">
-        <div class="hero__avatars">
-          <div class="hero__avatar">
-            <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.8)" style="width:100%;height:100%"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
-          </div>
-          <div class="hero__avatar">
-            <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)" style="width:100%;height:100%"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
-          </div>
-          <div class="hero__avatar">
-            <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)" style="width:100%;height:100%"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
-          </div>
-          <div class="hero__avatar">
-            <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)" style="width:100%;height:100%"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
-          </div>
-        </div>
-        <div class="hero__stat-text">
-          <div class="hero__stat-num">4.6M+</div>
-          <div class="hero__stat-label">Happy users worldwide</div>
-        </div>
-      </div>
-    </div>
+      </nav>
+      <aside>
+        <div>
 
-    <!-- Phone mockups -->
-    <div class="hero__phones anim-fadein d3">
-      <div class="hero__phone hero__phone--main">
-        <div class="phone-screen">
-          <div class="phone-status">
-            <span class="phone-time">9:41</span>
-            <div class="phone-dots"><span></span><span></span><span></span></div>
-          </div>
-          <div class="phone-greeting">Good morning,</div>
-          <div class="phone-name">James 👋</div>
-          <div class="phone-balance-card">
-            <div class="phone-balance-label">Total Balance</div>
-            <div class="phone-balance-num"><span>Rp </span>12.450.000</div>
-          </div>
-          <div class="phone-actions">
-            <div class="phone-action"><div class="phone-action-icon">↑</div><div class="phone-action-text">Send</div></div>
-            <div class="phone-action"><div class="phone-action-icon">↓</div><div class="phone-action-text">Receive</div></div>
-            <div class="phone-action"><div class="phone-action-icon">⊕</div><div class="phone-action-text">Top Up</div></div>
-            <div class="phone-action"><div class="phone-action-icon">⋯</div><div class="phone-action-text">More</div></div>
-          </div>
-          <div class="phone-txn-title">Recent Transactions</div>
-          <div class="phone-txn">
-            <div class="phone-txn-icon">🛒</div>
-            <div class="phone-txn-info"><div class="phone-txn-name">Shopee</div><div class="phone-txn-date">Today, 10:30</div></div>
-            <div class="phone-txn-amount red">-Rp 85.000</div>
-          </div>
-          <div class="phone-txn">
-            <div class="phone-txn-icon">💰</div>
-            <div class="phone-txn-info"><div class="phone-txn-name">Salary</div><div class="phone-txn-date">Yesterday</div></div>
-            <div class="phone-txn-amount green">+Rp 8.500.000</div>
-          </div>
-          <div class="phone-txn">
-            <div class="phone-txn-icon">🍔</div>
-            <div class="phone-txn-info"><div class="phone-txn-name">GrabFood</div><div class="phone-txn-date">Yesterday</div></div>
-            <div class="phone-txn-amount red">-Rp 45.000</div>
-          </div>
+
+
+
         </div>
-      </div>
-      <div class="hero__phone hero__phone--secondary">
-        <div class="phone-screen phone-screen--sm">
-          <div class="phone-status">
-            <span class="phone-time">9:41</span>
-            <div class="phone-dots"><span></span><span></span></div>
-          </div>
-          <div class="phone-mini-card">
-            <div class="phone-mini-label">Savings Goal</div>
-            <div class="phone-mini-num">Rp 5.2M</div>
-          </div>
-          <div class="phone-txn-title">Spending Chart</div>
-          <div class="phone-chart">
-            <div class="phone-bar" style="height:40%"></div>
-            <div class="phone-bar" style="height:65%"></div>
-            <div class="phone-bar active" style="height:90%"></div>
-            <div class="phone-bar" style="height:55%"></div>
-            <div class="phone-bar" style="height:75%"></div>
-            <div class="phone-bar" style="height:45%"></div>
-            <div class="phone-bar" style="height:80%"></div>
-          </div>
+        <div>
+          <strong>4.6M+</strong>
+          <small>Happy users worldwide</small>
         </div>
-      </div>
-    </div>
-  </section>
+      </aside>
+
+    </article>
+
+  </header>
 
   <!-- FEATURES BAR -->
-  <section class="features-bar">
-    <div class="features-bar__inner">
-      <div class="feature-chip anim-fadeup d1">
-        <div class="feature-chip__icon">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.18 2 2 0 012 .02h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
-        </div>
-        <div class="feature-chip__text">
+  <section>
+    <div>
+      <article>
+
+        <div>
           <h3>24/7 Support</h3>
           <p>Contact us anytime, we'll always be ready to help you immediately.</p>
         </div>
-      </div>
-      <div class="feature-chip anim-fadeup d2">
-        <div class="feature-chip__icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="feature-chip__text">
+      </article>
+      <article>
+
+        <div>
           <h3>Data Privacy</h3>
           <p>Your data is encrypted and secured in our database at all times.</p>
         </div>
-      </div>
-      <div class="feature-chip anim-fadeup d3">
-        <div class="feature-chip__icon">
-          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        </div>
-        <div class="feature-chip__text">
+      </article>
+      <article>
+
+        <div>
           <h3>Easy Download</h3>
           <p>100% free on Google Play Store and App Store for all users.</p>
         </div>
-      </div>
+      </article>
     </div>
   </section>
 
   <!-- ABOUT / WELCOME -->
-  <section class="about" id="about">
-    <div class="about__text anim-fadeup d1">
-      <span class="about__eyebrow">Welcome to E-Wallet</span>
-      <h2 class="about__heading">Your All-in-One Digital Payment Solution</h2>
-      <p class="about__body">
-        Say goodbye to cash and hello to the future of payments! With E-Wallet, you have the power of secure, fast, and convenient digital transactions right at your fingertips. Whether you're shopping, dining out, or sending money to loved ones, we've got you covered.
-      </p>
-      <a class="btn-primary" href="#">
+  <section id="about">
+    <div>
+      <small>Welcome to E-Wallet</small>
+      <h2>Your All-in-One Digital Payment Solution</h2>
+      <p>Say goodbye to cash and hello to the future of payments! With E-Wallet, you have the power of secure, fast, and convenient digital transactions right at your fingertips. Whether you're shopping, dining out, or sending money to loved ones, we've got you covered.</p>
+      <a href="#" data-cta>
         Get Started
-        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+
       </a>
     </div>
-    <div class="about__card anim-fadein d3">
-      <div class="about__card-grid">
-        <div class="stat-box">
-          <div class="stat-box__num">4.6M+</div>
-          <div class="stat-box__label">Active Users Worldwide</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-box__num">100+</div>
-          <div class="stat-box__label">Trusted Partners</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-box__num">99.9%</div>
-          <div class="stat-box__label">Uptime & Reliability</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-box__num">5★</div>
-          <div class="stat-box__label">Average User Rating</div>
-        </div>
-      </div>
+    <div>
+      <div><strong>4.6M+</strong><span>Active Users Worldwide</span></div>
+      <div><strong>100+</strong><span>Trusted Partners</span></div>
+      <div><strong>99.9%</strong><span>Uptime &amp; Reliability</span></div>
+      <div><strong>5★</strong><span>Average User Rating</span></div>
     </div>
   </section>
 
   <!-- FEATURES DETAIL -->
-  <section class="features-detail" id="features">
-    <div class="features-detail__inner">
-      <div class="features-detail__visual">
-        <div class="features-detail__circle">
-          <div class="orbit-dot">💳</div>
-          <div class="orbit-dot">🔒</div>
-          <div class="orbit-dot">⚡</div>
-          <div class="features-detail__phone-wrap">
-            <div class="features-detail__phone-img">
-              <div class="phone-screen" style="padding:20px 14px;">
-                <div class="phone-status">
-                  <span class="phone-time">9:41</span>
-                  <div class="phone-dots"><span></span><span></span></div>
-                </div>
-                <div class="phone-mini-card" style="margin-bottom:14px;">
-                  <div class="phone-mini-label">My Balance</div>
-                  <div class="phone-mini-num" style="font-size:18px;">Rp 12.450.000</div>
-                </div>
-                <div class="phone-actions" style="margin-bottom:14px;">
-                  <div class="phone-action"><div class="phone-action-icon">↑</div><div class="phone-action-text">Send</div></div>
-                  <div class="phone-action"><div class="phone-action-icon">↓</div><div class="phone-action-text">Top Up</div></div>
-                  <div class="phone-action"><div class="phone-action-icon">⊕</div><div class="phone-action-text">Pay</div></div>
-                </div>
-                <div class="phone-txn-title">Quick Stats</div>
-                <div class="phone-chart" style="height:60px;">
-                  <div class="phone-bar" style="height:50%"></div>
-                  <div class="phone-bar active" style="height:100%"></div>
-                  <div class="phone-bar" style="height:70%"></div>
-                  <div class="phone-bar" style="height:40%"></div>
-                  <div class="phone-bar" style="height:80%"></div>
-                </div>
+  <section id="features">
+    <div>
+      <figure>
+        <div>
+          <span>💳</span>
+          <span>🔒</span>
+          <span>⚡</span>
+          <div class="phone-wrap">
+            <div class="phone-screen">
+              <div class="phone-status">
+                <span class="phone-time">9:41</span>
+                <div class="phone-dots"></div>
+              </div>
+              <div class="phone-mini-card">
+                <div class="phone-mini-label">My Balance</div>
+                <div class="phone-mini-num">Rp 12.450.000</div>
+              </div>
+              <div class="phone-actions">
+                <div class="phone-action"><div class="phone-action-icon">↑</div><div class="phone-action-text">Send</div></div>
+                <div class="phone-action"><div class="phone-action-icon">↓</div><div class="phone-action-text">Top Up</div></div>
+                <div class="phone-action"><div class="phone-action-icon">⊕</div><div class="phone-action-text">Pay</div></div>
+              </div>
+              <div class="phone-txn-title">Quick Stats</div>
+              <div class="phone-chart">
+                <div class="phone-bar" style="height:50%"></div>
+                <div class="phone-bar active" style="height:100%"></div>
+                <div class="phone-bar" style="height:70%"></div>
+                <div class="phone-bar" style="height:40%"></div>
+                <div class="phone-bar" style="height:80%"></div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="features-detail__content anim-fadeup d2">
-        <h2 class="features-detail__heading">All The Great E-Wallet Features</h2>
-        <p class="features-detail__body">
-          We have some great features in the application and it's totally free to use for all users around the world.
-        </p>
-        <ul class="check-list">
-          <li class="check-item">
-            <div class="check-item__icon">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
+      </figure>
+      <div>
+        <h2>All The Great E-Wallet Features</h2>
+        <p>We have some great features in the application and it's totally free to use for all users around the world.</p>
+        <ul>
+          <li>
+
             Small Fee
           </li>
-          <li class="check-item">
-            <div class="check-item__icon">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
+          <li>
+
             Data Secured
           </li>
-          <li class="check-item">
-            <div class="check-item__icon">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
+          <li>
+
             User Friendly
           </li>
         </ul>
-        <a class="btn-primary" href="#">
+        <a href="#" data-cta>
           Get Started
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+
         </a>
       </div>
     </div>
   </section>
 
   <!-- PARTNERS -->
-  <section class="partners" id="partners">
-    <h2 class="partners__heading">100+ Trusted Partners</h2>
-    <p class="partners__sub">We have reached global level and have 100+ brand partners around the globe.</p>
-    <div class="partners__logos">
-      <!-- Partner logos as abstract SVG shapes -->
-      <div class="partner-tile">
-        <svg viewBox="0 0 48 48" fill="#4F5665"><rect x="8" y="16" width="32" height="8" rx="4"/><rect x="8" y="28" width="20" height="8" rx="4"/></svg>
-      </div>
-      <div class="partner-tile">
-        <svg viewBox="0 0 48 48" fill="#4F5665"><circle cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="7" fill="#fff"/></svg>
-      </div>
-      <div class="partner-tile">
-        <svg viewBox="0 0 48 48" fill="#4F5665"><polygon points="24,8 40,36 8,36"/></svg>
-      </div>
-      <div class="partner-tile">
-        <svg viewBox="0 0 48 48" fill="#4F5665"><rect x="10" y="10" width="12" height="12" rx="3"/><rect x="26" y="10" width="12" height="12" rx="3"/><rect x="10" y="26" width="12" height="12" rx="3"/><rect x="26" y="26" width="12" height="12" rx="3"/></svg>
-      </div>
-      <div class="partner-tile">
-        <svg viewBox="0 0 48 48" fill="#4F5665"><path d="M8 24c0-8.8 7.2-16 16-16s16 7.2 16 16H8z"/><path d="M16 32c0-4.4 3.6-8 8-8s8 3.6 8 8H16z" fill="rgba(79,86,101,0.4)"/></svg>
-      </div>
-      <div class="partner-tile">
-        <svg viewBox="0 0 48 48" fill="#4F5665"><path d="M24 8L8 20v20h12V28h8v12h12V20L24 8z"/></svg>
-      </div>
+  <section id="partners">
+    <h2>100+ Trusted Partners</h2>
+    <p>We have reached global level and have 100+ brand partners around the globe.</p>
+    <div>
+
+
+
+
+
+
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials" id="testimonials">
-    <div class="testimonials__header">
-      <h2 class="testimonials__heading">What Our Users Are Saying</h2>
-      <p class="testimonials__sub">Ready to experience the future of payments? Join millions of happy users worldwide.</p>
-    </div>
-    <div class="testimonials__track-wrap">
-      <div class="testimonial-card">
-        <div class="testimonial-avatar">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
-        </div>
-        <div class="testimonial-name">James Bond</div>
-        <div class="testimonial-stars">
-          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          <span class="testimonial-rating">5.0</span>
-        </div>
-        <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">
-          I've been using the e-wallet for over two years now, and I'm very satisfied with the ease of use. This has completely changed the way I shop and conduct financial transactions.
-        </p>
+  <!-- TESTIMONIALS (CSS-only carousel) -->
+  <section id="testimonials">
+    <input type="radio" name="testimonial" id="t1" checked />
+    <input type="radio" name="testimonial" id="t2" />
+    <input type="radio" name="testimonial" id="t3" />
+
+    <header>
+      <h2>What Our Users Are Saying</h2>
+      <p>Ready to experience the future of payments? Join millions of happy users worldwide.</p>
+    </header>
+
+    <div>
+      <div>
+        <article>
+          <div>
+
+            <h3>James Bond</h3>
+            <div>
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span>5.0</span>
+            </div>
+            <blockquote>
+              <p>I've been using the e-wallet for over two years now, and I'm very satisfied with the ease of use. This has completely changed the way I shop and conduct financial transactions.</p>
+            </blockquote>
+          </div>
+        </article>
+        <article>
+          <div>
+
+            <h3>Siti Rahayu</h3>
+            <div>
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span>5.0</span>
+            </div>
+            <blockquote>
+              <p>E-Wallet membuat hidup saya jauh lebih mudah! Transfer uang ke keluarga sangat cepat dan tanpa biaya besar. Sangat recommended untuk semua orang.</p>
+            </blockquote>
+          </div>
+        </article>
+        <article>
+          <div>
+
+            <h3>Budi Santoso</h3>
+            <div>
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span>5.0</span>
+            </div>
+            <blockquote>
+              <p>The security features are top-notch. I feel very safe using this app for all my daily transactions. Customer support is also very responsive whenever I need help.</p>
+            </blockquote>
+          </div>
+        </article>
       </div>
     </div>
-    <div class="testimonials__nav">
-      <button class="nav-btn nav-btn--prev" aria-label="Previous">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <button class="nav-btn nav-btn--next" aria-label="Next">
-        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-    </div>
+
+    <nav>
+      <label for="t1"></label>
+      <label for="t2"></label>
+    </nav>
+
+    <footer>
+      <label for="t1"></label>
+      <label for="t2"></label>
+      <label for="t3"></label>
+    </footer>
   </section>
 
   <!-- DOWNLOAD CTA -->
-  <section class="download">
-    <div class="download__phones anim-fadein">
-      <div class="download__phone download__phone--main">
+  <section>
+    <figure>
+      <div>
         <div class="phone-screen">
           <div class="phone-status">
             <span class="phone-time">9:41</span>
-            <div class="phone-dots"><span></span><span></span><span></span></div>
+            <div class="phone-dots"></div>
           </div>
           <div class="phone-greeting">Welcome back,</div>
           <div class="phone-name">Sarah ✨</div>
@@ -1243,11 +277,11 @@
           </div>
         </div>
       </div>
-      <div class="download__phone download__phone--secondary">
-        <div class="phone-screen phone-screen--sm">
+      <div>
+        <div class="phone-screen">
           <div class="phone-status">
             <span class="phone-time">9:41</span>
-            <div class="phone-dots"><span></span><span></span></div>
+            <div class="phone-dots"></div>
           </div>
           <div class="phone-mini-card">
             <div class="phone-mini-label">This Month</div>
@@ -1262,44 +296,34 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="download__content anim-fadeup d2">
-      <h2 class="download__heading">Download The App</h2>
-      <p class="download__body">
-        Ready to experience the future of payments? Download E-Wallet now and enjoy a world of convenience at your fingertips.
-      </p>
-      <div class="download__buttons">
-        <a class="btn-dl-primary" href="#">
-          <svg viewBox="0 0 24 24">
-            <path fill="#fff" d="M3.18 1.22A1 1 0 002 2.16v19.68a1 1 0 001.18 1l12.26-9.84L3.18 1.22z"/>
-            <path fill="rgba(255,255,255,0.7)" d="M16.5 10l-2.94-2.35-10.38-8.33L17.82 8.5 16.5 10z"/>
-            <path fill="rgba(255,255,255,0.5)" d="M16.5 14l1.32 1.5L3.18 22.78l10.38-8.33L16.5 14z"/>
-          </svg>
+    </figure>
+    <div>
+      <h2>Download The App</h2>
+      <p>Ready to experience the future of payments? Download E-Wallet now and enjoy a world of convenience at your fingertips.</p>
+      <nav>
+        <a href="#">
+
           Play Store
         </a>
-        <a class="btn-dl-outline" href="#">
-          <svg viewBox="0 0 24 24" fill="var(--blue)" width="22" height="22">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-          </svg>
+        <a href="#">
+
           App Store
         </a>
-      </div>
+      </nav>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer__top">
-      <div class="footer__brand">
-        <div class="logo">
-          <div class="logo-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 7H3a1 1 0 00-1 1v12a1 1 0 001 1h18a1 1 0 001-1V8a1 1 0 00-1-1zM1 5a2 2 0 012-2h18a2 2 0 012 2v1H1V5z"/></svg>
-          </div>
-          <span class="logo-text">E-Wallet</span>
+    <div>
+      <section>
+        <div>
+
+          <strong>E-Wallet</strong>
         </div>
         <p>E-Wallet gives you the blocks and components you need to create a truly seamless payment experience.</p>
-      </div>
-      <div class="footer__col">
+      </section>
+      <nav>
         <h4>Product</h4>
         <ul>
           <li><a href="#">Download</a></li>
@@ -1308,96 +332,33 @@
           <li><a href="#">Countries</a></li>
           <li><a href="#">Blog</a></li>
         </ul>
-      </div>
-      <div class="footer__col">
+      </nav>
+      <address>
         <h4>Engage</h4>
-        <div class="footer__contact-item">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.18 2 2 0 012 .02h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+        <div>
+
           <span>+62 5637 8882 9901</span>
         </div>
-        <div class="footer__contact-item">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <span>contact@ewallet.com</span>
+        <div>
+
+          <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="73101c1d07121007331604121f1f16075d101c1e">[email protected]</a></span>
         </div>
-        <div class="footer__social">
-          <a href="#" class="social-icon" aria-label="Twitter">
-            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
-          </a>
-          <a href="#" class="social-icon" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          </a>
-          <a href="#" class="social-icon" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="#2948FF"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="#" class="social-icon" aria-label="GitHub">
-            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer__col">
+        <nav>
+          <a href="#" aria-label="Twitter"></a>
+          <a href="#" aria-label="Facebook"></a>
+          <a href="#" aria-label="Instagram"></a>
+          <a href="#" aria-label="GitHub"></a>
+        </nav>
+      </address>
+      <section>
         <h4>Newsletter</h4>
-        <div class="footer__email-input-wrap">
-          <input class="footer__email-input" type="email" placeholder="Enter Your Email" />
-          <button class="btn-subscribe">Subscribe</button>
+        <div>
+          <input type="email" placeholder="Enter Your Email" />
+          <button>Subscribe</button>
         </div>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <p class="footer__copyright">© 2025 E-Wallet. All Rights Reserved.</p>
+      </section>
     </div>
   </footer>
 
-  <script>
-    // Testimonials data
-    const testimonials = [
-      {
-        name: "James Bond",
-        text: "I've been using the e-wallet for over two years now, and I'm very satisfied with the ease of use. This has completely changed the way I shop and conduct financial transactions.",
-        rating: 5
-      },
-      {
-        name: "Siti Rahayu",
-        text: "E-Wallet membuat hidup saya jauh lebih mudah! Transfer uang ke keluarga sangat cepat dan tanpa biaya besar. Sangat recommended untuk semua orang.",
-        rating: 5
-      },
-      {
-        name: "Budi Santoso",
-        text: "The security features are top-notch. I feel very safe using this app for all my daily transactions. Customer support is also very responsive whenever I need help.",
-        rating: 5
-      }
-    ];
-    let current = 0;
-
-    function updateTestimonial() {
-      const t = testimonials[current];
-      const card = document.querySelector('.testimonial-card');
-      card.style.opacity = 0;
-      card.style.transform = 'translateY(10px)';
-      setTimeout(() => {
-        card.querySelector('.testimonial-name').textContent = t.name;
-        card.querySelector('.testimonial-text').textContent = t.text;
-        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-        card.style.opacity = 1;
-        card.style.transform = 'translateY(0)';
-      }, 200);
-    }
-
-    document.querySelector('.nav-btn--prev').addEventListener('click', () => {
-      current = (current - 1 + testimonials.length) % testimonials.length;
-      updateTestimonial();
-    });
-    document.querySelector('.nav-btn--next').addEventListener('click', () => {
-      current = (current + 1) % testimonials.length;
-      updateTestimonial();
-    });
-
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-      });
-    });
-  </script>
 </body>
 </html>

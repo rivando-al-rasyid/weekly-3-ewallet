@@ -251,6 +251,7 @@ main {
 
 /* ── STEPPER ── */
 .stepper {
+  width: 40vw;
   display: flex;
   align-items: center;
   margin-bottom: 36px;

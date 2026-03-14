@@ -112,7 +112,7 @@ form {
 .register-bg {
     @media (min-width: 992px) {
         background-image:
-            url('../assets/image.png'),
+            url('../assets/image1.png'),
             radial-gradient(50% 50% at 50% 50%, var(--color-bg-gradient) 0%, var(--color-bg-gradient-end) 100%);
         background-size: 70%, 100% 100%;
     }
