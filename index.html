@@ -43,7 +43,7 @@
             </svg>
             Profile
           </a>
-          <a class="dropdown-item dropdown-item-danger" href="#" onclick="confirmLogout(event)">
+          <a class="dropdown-item dropdown-item-danger" href="#">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
               <polyline points="16 17 21 12 16 7"/>
@@ -108,7 +108,7 @@
     </div>
 
     <div class="nav-logout-wrapper">
-      <div class="nav-logout" onclick="toggleLogoutDropdown()">
+      <div class="nav-logout">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
           <polyline points="16 17 21 12 16 7"/>
@@ -116,20 +116,12 @@
         </svg>
         Keluar
       </div>
-      <div class="logout-dropdown" id="logoutDropdown">
-        <div class="logout-confirm-text">Yakin ingin keluar?</div>
-        <div class="logout-confirm-actions">
-          <button class="logout-cancel-btn" onclick="toggleLogoutDropdown()">Batal</button>
-          <button class="logout-confirm-btn" onclick="doLogout()">Ya, Keluar</button>
-        </div>
-      </div>
     </div>
   </nav>
 
   <!-- MAIN -->
   <main>
-    <div class="left-col">
-
+    <section class="left-col">
       <!-- STAT CARDS -->
       <div class="stat-cards">
 
@@ -230,10 +222,10 @@
           <canvas id="myChart"></canvas>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- RIGHT SIDEBAR -->
-    <div class="right-sidebar">
+    <aside class="right-sidebar">
       <div class="sidebar-title">Transaksi Terbaru</div>
       <div class="transaction-list">
 
@@ -319,7 +311,7 @@
         </div>
 
       </div>
-    </div>
+    </aside>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -342,22 +334,7 @@
       }
     }
 
-    function confirmLogout(e) {
-      e.preventDefault();
-      document.getElementById('userDropdownMenu').classList.remove('open');
-      toggleLogoutDropdown();
-    }
 
-    function toggleLogoutDropdown() {
-      const dd = document.getElementById('logoutDropdown');
-      const chevron = document.getElementById('logoutChevron');
-      const isOpen = dd.classList.toggle('open');
-      chevron.style.transform = isOpen ? 'rotate(180deg)' : '';
-    }
-
-    function doLogout() {
-      alert('Anda telah keluar.');
-    }
 
       const ctx = document.getElementById('myChart');
 
