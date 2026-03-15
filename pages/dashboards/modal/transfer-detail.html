@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>E-Wallet — Transfer · Set Nominal</title>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@600&display=swap" rel="stylesheet">
-        <link href="/css/dashboard.css" rel="stylesheet">
+        <link href="../../../css/dashboard.css" rel="stylesheet">
     </head>
     <body>
 
@@ -216,6 +216,7 @@
 
         <!-- MAIN -->
         <main class="dashboard1">
+
             <div class="page-header">
                 <svg
                     viewBox="0 0 24 24"
@@ -230,38 +231,41 @@
                 </svg>
                 <span class="page-title">Transfer Money</span>
             </div>
+            <!-- Stepper -->
+            <div class="stepper">
+                <div class="step step--done">
+                    <div class="step__circle">
+                        <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    Find People
+                </div>
+                <div class="step__divider step__divider--done"></div>
+                <div class="step step--active">
+                    <div class="step__circle">2</div>
+                    Set Nominal
+                </div>
+                <div class="step__divider"></div>
+                <div class="step">
+                    <div class="step__circle">3</div>
+                    Finish
+                </div>
+            </div>
 
             <div class="transfer-section">
-                <div class="stepper">
-                    <div class="step step--done">
-                        <div class="step__circle">
-                            <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="3"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                        </div>
-                        Find People
-                    </div>
-                    <div class="step__divider step__divider--done"></div>
-                    <div class="step step--active">
-                        <div class="step__circle">2</div>
-                        Set Nominal
-                    </div>
-                    <div class="step__divider"></div>
-                    <div class="step">
-                        <div class="step__circle">3</div>
-                        Finish
-                    </div>
-                </div>
 
+
+                <!-- People Information -->
                 <p class="section-title">People Information</p>
                 <div class="people-card">
                     <div class="people-info">
@@ -280,8 +284,8 @@
                     <button
                         class="star-btn"
                         id="starBtn"
-                        onclick="this.style.color='#f4b942'"
-                        title="Favourite"
+                        title="Add to favorites"
+                        aria-label="Favorite"
                     >
                         <svg
                             width="18"
@@ -298,6 +302,7 @@
                     </button>
                 </div>
 
+                <!-- Amount -->
                 <div class="field-block">
                     <p class="field-label">Amount</p>
                     <p class="field-sub">Type the amount you want to transfer and then press continue to the next steps.</p>
@@ -337,14 +342,91 @@
                     </div>
                 </div>
 
+                <!-- Notes -->
                 <div class="field-block">
                     <p class="field-label">Notes</p>
                     <p class="field-sub">You can add some notes for this transfer such as payment coffee or something</p>
-                    <textarea placeholder="Enter Some Notes" style="height:180px;"></textarea>
+                    <textarea
+                        id="notesInput"
+                        placeholder="Enter Some Notes"
+                        style="height:180px;"
+                    ></textarea>
                 </div>
 
+                <!-- Submit -->
                 <button class="submit-btn" onclick="openPinModal()">Submit &amp; Transfer</button>
+
             </div>
+
+            <!-- MODAL PIN — di dalam <main> agar hanya menutupi area main -->
+            <div class="modal-overlay hidden" id="pinModal">
+                <div class="modal">
+                    <div class="modal-title">TRANSFER TO GHALUH 1</div>
+                    <h2 class="modal-success-heading">Enter Your PIN 👋</h2>
+                    <p class="modal-success-sub">Enter Your PIN For Transaction</p>
+
+                    <div class="pin-input-group">
+                        <input
+                            type="text"
+                            maxlength="1"
+                            inputmode="numeric"
+                            pattern="[0-9]*"
+                            autocomplete="off"
+                            placeholder="0"
+                            autofocus
+                        >
+                        <input
+                            type="text"
+                            maxlength="1"
+                            inputmode="numeric"
+                            pattern="[0-9]*"
+                            autocomplete="off"
+                            placeholder="0"
+                        >
+                        <input
+                            type="text"
+                            maxlength="1"
+                            inputmode="numeric"
+                            pattern="[0-9]*"
+                            autocomplete="off"
+                            placeholder="0"
+                        >
+                        <input
+                            type="text"
+                            maxlength="1"
+                            inputmode="numeric"
+                            pattern="[0-9]*"
+                            autocomplete="off"
+                            placeholder="0"
+                        >
+                        <input
+                            type="text"
+                            maxlength="1"
+                            inputmode="numeric"
+                            pattern="[0-9]*"
+                            autocomplete="off"
+                            placeholder="0"
+                        >
+                        <input
+                            type="text"
+                            maxlength="1"
+                            inputmode="numeric"
+                            pattern="[0-9]*"
+                            autocomplete="off"
+                            placeholder="0"
+                        >
+                    </div>
+
+                    <button class="modal-btn-done" onclick="submitPin()">Submit</button>
+                    <button class="modal-btn-back" onclick="closeModal()">Cancel</button>
+
+                    <p style="font-size:12px; color:var(--text-soft); margin-top:12px;">
+                        Forgot your PIN?
+                        <a href="#" style="color:var(--blue); font-weight:600;">Reset</a>
+                    </p>
+                </div>
+            </div>
+
         </main>
 
         <!-- BOTTOM NAV -->
@@ -444,37 +526,39 @@
             </a>
         </nav>
 
-
         <script>
             function openPinModal() {
                 const amount = document.getElementById('amountInput').value;
                 if (!amount || Number(amount) <= 0) {
                     document.getElementById('amountInput').focus();
+                    document.querySelector('#amountInput').closest('.input-wrap').style.borderColor = 'var(--red)';
                     return;
                 }
                 document.getElementById('pinModal').classList.remove('hidden');
+                // reset inputs
+                document.querySelectorAll('#pinModal .pin-input-group input').forEach(i => i.value = '');
+                document.querySelector('#pinModal .pin-input-group input').focus();
+            }
+
+            function closeModal() {
+                document.getElementById('pinModal').classList.add('hidden');
             }
 
             function submitPin() {
                 const inputs = document.querySelectorAll('#pinModal .pin-input-group input');
                 const pin = Array.from(inputs).map(i => i.value).join('');
-                if (pin.length < 6) return;
-                closeModal('pinModal');
-                // Simulate result — in real app, call API here
-                const success = Math.random() > 0.3;
-                if (success) {
-                    window.location.href = './transfer-success.html';
-                } else {
-                    window.location.href = './transfer-failed.html';
+                if (pin.length < 6) {
+                    inputs[pin.length].focus();
+                    return;
                 }
-            }
-
-            function closeModal(id) {
-                document.getElementById(id).classList.add('hidden');
+                closeModal();
+                // Simulate API result
+                const success = Math.random() > 0.3;
+                window.location.href = success ? './transfer-success.html' : './transfer-failed.html';
             }
 
             // PIN auto-advance
-            document.querySelectorAll('.pin-input-group input').forEach((input, i, arr) => {
+            document.querySelectorAll('#pinModal .pin-input-group input').forEach((input, i, arr) => {
                 input.addEventListener('input', () => {
                     input.value = input.value.replace(/[^0-9]/g, '');
                     if (input.value && i < arr.length - 1) arr[i + 1].focus();
@@ -482,6 +566,14 @@
                 input.addEventListener('keydown', e => {
                     if (e.key === 'Backspace' && !input.value && i > 0) arr[i - 1].focus();
                 });
+            });
+
+            // Star toggle
+            document.getElementById('starBtn').addEventListener('click', function() {
+                const isActive = this.classList.toggle('active-star');
+                const svg = this.querySelector('svg');
+                this.style.color = isActive ? '#f4b942' : '';
+                svg.setAttribute('fill', isActive ? '#f4b942' : 'none');
             });
 
             // Dropdown
@@ -494,6 +586,11 @@
             });
             document.addEventListener('click', e => {
                 if (!dropdown.contains(e.target)) menu.classList.remove('open');
+            });
+
+            // Clear amount error on input
+            document.getElementById('amountInput').addEventListener('input', function() {
+                this.closest('.input-wrap').style.borderColor = '';
             });
         </script>
 
