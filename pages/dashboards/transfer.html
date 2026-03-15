@@ -3,17 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>E-Wallet — Find People</title>
+        <title>E-Wallet — Transfer</title>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@600&display=swap" rel="stylesheet">
         <link href="../../css/dashboard.css" rel="stylesheet">
     </head>
     <body>
-        Riwayat
+
         <!-- HEADER -->
         <header>
-            <a class="logo" href="../pages/dashboard.html">
+            <a class="logo" href="./index.html">
                 <div class="logo-icon">
-                    <i class="fa-solid fa-money-bill"></i>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="5" width="20" height="14" rx="2"/>
+                        <path d="M16 12h2"/>
+                        <path d="M2 10h20"/>
+                    </svg>
                 </div>
                 <span class="logo-text">E-Wallet</span>
             </a>
@@ -23,53 +27,24 @@
                     <div class="user-dropdown-trigger">
                         <div class="avatar">BS</div>
                         <div class="chevron-down" id="userChevron">
-                            <svg
-                                width="14"
-                                height="8"
-                                viewBox="0 0 14 8"
-                                fill="none"
-                            >
-                                <path
-                                    d="M1 1L7 7L13 1"
-                                    stroke="#4F5665"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                />
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+                                <path d="M1 1L7 7L13 1" stroke="#4F5665" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
                     </div>
                     <div class="user-dropdown-menu" id="userDropdownMenu">
-                        <a class="dropdown-item" href="#">
-                            <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            >
+                        <a class="dropdown-item" href="./edit-profile.html">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-                                <circle
-                                    cx="12"
-                                    cy="7"
-                                    r="4"
-                                />
+                                <circle cx="12" cy="7" r="4"/>
                             </svg>
                             Profile
                         </a>
                         <a class="dropdown-item dropdown-item-danger" href="#">
-                            <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
                                 <polyline points="16 17 21 12 16 7"/>
-                                <line
-                                    x1="21"
-                                    y1="12"
-                                    x2="9"
-                                    y2="12"
-                                />
+                                <line x1="21" y1="12" x2="9" y2="12"/>
                             </svg>
                             Keluar
                         </a>
@@ -81,172 +56,49 @@
         <!-- SIDENAV -->
         <nav class="sidenav">
             <div class="sidenav-items">
-                <a class="nav-item active" href="#">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <rect
-                            x="3"
-                            y="3"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-                        <rect
-                            x="14"
-                            y="3"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-                        <rect
-                            x="3"
-                            y="14"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-                        <rect
-                            x="14"
-                            y="14"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
+                <a class="nav-item" href="./index.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1"/>
                     </svg>
                     Dashboard
                 </a>
-                <a class="nav-item" href="./transfer.html">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
+                <a class="nav-item active" href="./transfer.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M22 2L11 13"/>
                         <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
                     </svg>
                     Transfer
                 </a>
                 <a class="nav-item" href="./history.html">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="10"
-                        />
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
                         <polyline points="12 6 12 12 16 14"/>
                     </svg>
                     History
                 </a>
-                <a class="nav-item" href="../pages/topup.html">
-                    <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <mask
-                            id="mask0_30_537"
-                            style="mask-type:luminance"
-                            maskUnits="userSpaceOnUse"
-                            x="2"
-                            y="8"
-                            width="20"
-                            height="15"
-                        >
-                            <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M2.00049 8.7941H22.0001V22.5381H2.00049V8.7941Z"
-                                fill="white"
-                            />
-                        </mask>
-                        <g mask="url(#mask0_30_537)">
-                            <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M17.5655 22.5381H6.43549C3.99049 22.5381 2.00049 20.5491 2.00049 18.1031V13.2281C2.00049 10.7831 3.99049 8.7941 6.43549 8.7941H7.36849C7.78249 8.7941 8.11849 9.1301 8.11849 9.5441C8.11849 9.9581 7.78249 10.2941 7.36849 10.2941H6.43549C4.81649 10.2941 3.50049 11.6101 3.50049 13.2281V18.1031C3.50049 19.7221 4.81649 21.0381 6.43549 21.0381H17.5655C19.1835 21.0381 20.5005 19.7221 20.5005 18.1031V13.2191C20.5005 11.6061 19.1885 10.2941 17.5765 10.2941H16.6335C16.2195 10.2941 15.8835 9.9581 15.8835 9.5441C15.8835 9.1301 16.2195 8.7941 16.6335 8.7941H17.5765C20.0155 8.7941 22.0005 10.7791 22.0005 13.2191V18.1031C22.0005 20.5491 20.0105 22.5381 17.5655 22.5381Z"
-                                fill="#4F5665"
-                            />
-                        </g>
-                        <mask
-                            id="mask1_30_537"
-                            style="mask-type:luminance"
-                            maskUnits="userSpaceOnUse"
-                            x="11"
-                            y="2"
-                            width="2"
-                            height="14"
-                        >
-                            <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M11.25 2.00009H12.75V15.541H11.25V2.00009Z"
-                                fill="white"
-                            />
-                        </mask>
-                        <g mask="url(#mask1_30_537)">
-                            <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M12 15.541C11.586 15.541 11.25 15.205 11.25 14.791V2.75C11.25 2.336 11.586 2 12 2C12.414 2 12.75 2.336 12.75 2.75V14.791C12.75 15.205 12.414 15.541 12 15.541Z"
-                                fill="#4F5665"
-                            />
-                        </g>
-                        <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M9.0852 6.42868C8.8942 6.42868 8.7022 6.35568 8.5562 6.20968C8.2632 5.91768 8.2612 5.44368 8.5542 5.14968L11.4692 2.22168C11.7502 1.93868 12.2502 1.93868 12.5312 2.22168L15.4472 5.14968C15.7392 5.44368 15.7382 5.91768 15.4452 6.20968C15.1512 6.50168 14.6772 6.50168 14.3852 6.20768L12.0002 3.81368L9.6162 6.20768C9.4702 6.35568 9.2772 6.42868 9.0852 6.42868Z"
-                            fill="#4F5665"
-                        />
+                <a class="nav-item" href="./topup.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 19V5M5 12l7-7 7 7"/>
                     </svg>
                     Top Up
                 </a>
                 <a class="nav-item" href="./edit-profile.html">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-                        <circle
-                            cx="9"
-                            cy="7"
-                            r="4"
-                        />
-                        <path d="M23 21v-2a4 4 0 00-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 010 7.75"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
                     </svg>
                     Profile
                 </a>
             </div>
             <div>
                 <div class="nav-logout">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
                         <polyline points="16 17 21 12 16 7"/>
-                        <line
-                            x1="21"
-                            y1="12"
-                            x2="9"
-                            y2="12"
-                        />
+                        <line x1="21" y1="12" x2="9" y2="12"/>
                     </svg>
                     Keluar
                 </div>
@@ -256,21 +108,14 @@
         <!-- MAIN -->
         <main class="dashboard">
 
-            <!-- Page Header -->
             <div class="page-header">
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M22 2L11 13"/>
                     <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
                 </svg>
                 <span class="page-title">Transfer Money</span>
             </div>
+
             <div class="stepper">
                 <div class="step step--active">
                     <div class="step__circle">1</div>
@@ -290,149 +135,76 @@
 
             <div class="find-people-section">
 
-                <!-- Stepper -->
-
-                <!-- Header Row -->
                 <div class="find-people-header">
                     <div>
                         <div class="find-people-title">Find People</div>
                         <div class="find-people-count">15 Results Found</div>
                     </div>
                     <div class="search-wrap">
-                        <input
-                            type="text"
-                            class="search-input"
-                            placeholder="Enter Number Or Full Name"
-                        >
+                        <input type="text" class="search-input" placeholder="Enter Number Or Full Name">
                         <span class="search-icon-btn">
-                            <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <circle
-                                    cx="11"
-                                    cy="11"
-                                    r="8"
-                                />
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"/>
                                 <path d="M21 21l-4.35-4.35"/>
                             </svg>
                         </span>
                     </div>
                 </div>
 
-                <!-- People Table -->
                 <table class="people-table">
                     <tbody>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=1"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Ghaluh 1</td>
-                            <td class="pt-phone">(239) 555-0108</td>
+                            <td><img src="https://i.pravatar.cc/150?u=1" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Ghaluh 1</div><div class="pt-phone">(239) 555-0108</div></td>
+                            <td></td>
                             <td class="pt-star">☆</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=2"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Aditya Pratama</td>
-                            <td class="pt-phone">(021) 555-0192</td>
+                            <td><img src="https://i.pravatar.cc/150?u=2" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Aditya Pratama</div><div class="pt-phone">(021) 555-0192</div></td>
+                            <td></td>
                             <td class="pt-star active">★</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=3"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Siti Aminah</td>
-                            <td class="pt-phone">(022) 555-0431</td>
+                            <td><img src="https://i.pravatar.cc/150?u=3" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Siti Aminah</div><div class="pt-phone">(022) 555-0431</div></td>
+                            <td></td>
                             <td class="pt-star">☆</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=4"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Budi Santoso</td>
-                            <td class="pt-phone">(031) 555-0785</td>
+                            <td><img src="https://i.pravatar.cc/150?u=4" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Budi Santoso</div><div class="pt-phone">(031) 555-0785</div></td>
+                            <td></td>
                             <td class="pt-star">☆</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=5"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Dewi Lestari</td>
-                            <td class="pt-phone">(021) 555-0990</td>
+                            <td><img src="https://i.pravatar.cc/150?u=5" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Dewi Lestari</div><div class="pt-phone">(021) 555-0990</div></td>
+                            <td></td>
                             <td class="pt-star active">★</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=6"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Fajar Ramadhan</td>
-                            <td class="pt-phone">(024) 555-0212</td>
+                            <td><img src="https://i.pravatar.cc/150?u=6" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Fajar Ramadhan</div><div class="pt-phone">(024) 555-0212</div></td>
+                            <td></td>
                             <td class="pt-star">☆</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=7"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Rina Wijaya</td>
-                            <td class="pt-phone">(031) 555-0654</td>
+                            <td><img src="https://i.pravatar.cc/150?u=7" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Rina Wijaya</div><div class="pt-phone">(031) 555-0654</div></td>
+                            <td></td>
                             <td class="pt-star">☆</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=8"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Hendra Kusuma</td>
-                            <td class="pt-phone">(021) 555-0321</td>
+                            <td><img src="https://i.pravatar.cc/150?u=8" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Hendra Kusuma</div><div class="pt-phone">(021) 555-0321</div></td>
+                            <td></td>
                             <td class="pt-star active">★</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=9"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Maya Indah</td>
-                            <td class="pt-phone">(022) 555-0876</td>
+                            <td><img src="https://i.pravatar.cc/150?u=9" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Maya Indah</div><div class="pt-phone">(022) 555-0876</div></td>
+                            <td></td>
                             <td class="pt-star">☆</td>
                         </tr>
                     </tbody>
@@ -440,6 +212,61 @@
 
             </div>
         </main>
+
+        <!-- BOTTOM NAV -->
+        <nav class="bottom-nav">
+            <a class="bottom-nav-item" href="./index.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+                Dashboard
+            </a>
+            <a class="bottom-nav-item active" href="./transfer.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M22 2L11 13"/>
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+                </svg>
+                Transfer
+            </a>
+            <a class="bottom-nav-item" href="./history.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                History
+            </a>
+            <a class="bottom-nav-item" href="./topup.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 19V5M5 12l7-7 7 7"/>
+                </svg>
+                Top Up
+            </a>
+            <a class="bottom-nav-item" href="./edit-profile.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                Profile
+            </a>
+        </nav>
+
+        <script>
+            const dropdown = document.getElementById('userDropdown');
+            const menu = document.getElementById('userDropdownMenu');
+            const chevron = document.getElementById('userChevron');
+            if (dropdown) {
+                dropdown.addEventListener('click', () => {
+                    menu.classList.toggle('open');
+                    chevron.style.transform = menu.classList.contains('open') ? 'rotate(180deg)' : '';
+                });
+                document.addEventListener('click', (e) => {
+                    if (!dropdown.contains(e.target)) menu.classList.remove('open');
+                });
+            }
+        </script>
 
     </body>
 </html>

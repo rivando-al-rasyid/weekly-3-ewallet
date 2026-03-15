@@ -1,58 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>E-Wallet - Change PIN</title>
-        <link rel="stylesheet" href="../../css/dashboard.css">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@600&display=swap" rel="stylesheet">
+        <link href="../../css/dashboard.css" rel="stylesheet">
         <style>
-        /* Fixes for missing variables in dashboard.css */
-        :root {
-            --color-border-pin: #e4e8f5;
-            --color-primary: var(--blue);
-            --color-text-heading: var(--dark);
-        }
-
         .pin-content {
             text-align: center;
             padding: 40px 0;
         }
-
-        .pin-input-group {
-            max-width: 400px;
-            margin: 40px auto;
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .pin-input-group input {
-            /* Overriding specific properties to match image_a87a23.png */
-            width: 50px;
-            height: 60px;
-            font-size: 24px;
-            font-weight: 600;
-            border: none;
-            border-bottom: 2px solid var(--color-border-pin);
-            text-align: center;
-            background: transparent;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .pin-input-group input:focus,
-        .pin-input-group input:not(:placeholder-shown) {
-            border-bottom: 2px solid var(--blue);
-        }
         </style>
     </head>
     <body>
+
         <!-- HEADER -->
         <header>
-            <a class="logo" href="#">
+            <a class="logo" href="./index.html">
                 <div class="logo-icon">
-                    <i class="fa-solid fa-money-bill"></i>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="5" width="20" height="14" rx="2"/>
+                        <path d="M16 12h2"/>
+                        <path d="M2 10h20"/>
+                    </svg>
                 </div>
                 <span class="logo-text">E-Wallet</span>
             </a>
@@ -62,53 +33,24 @@
                     <div class="user-dropdown-trigger">
                         <div class="avatar">BS</div>
                         <div class="chevron-down" id="userChevron">
-                            <svg
-                                width="14"
-                                height="8"
-                                viewBox="0 0 14 8"
-                                fill="none"
-                            >
-                                <path
-                                    d="M1 1L7 7L13 1"
-                                    stroke="#4F5665"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                />
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+                                <path d="M1 1L7 7L13 1" stroke="#4F5665" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
                     </div>
                     <div class="user-dropdown-menu" id="userDropdownMenu">
-                        <a class="dropdown-item" href="#">
-                            <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            >
+                        <a class="dropdown-item" href="./edit-profile.html">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-                                <circle
-                                    cx="12"
-                                    cy="7"
-                                    r="4"
-                                />
+                                <circle cx="12" cy="7" r="4"/>
                             </svg>
                             Profile
                         </a>
                         <a class="dropdown-item dropdown-item-danger" href="#">
-                            <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
                                 <polyline points="16 17 21 12 16 7"/>
-                                <line
-                                    x1="21"
-                                    y1="12"
-                                    x2="9"
-                                    y2="12"
-                                />
+                                <line x1="21" y1="12" x2="9" y2="12"/>
                             </svg>
                             Keluar
                         </a>
@@ -120,125 +62,49 @@
         <!-- SIDENAV -->
         <nav class="sidenav">
             <div class="sidenav-items">
-                <a class="nav-item active" href="#">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <rect
-                            x="3"
-                            y="3"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-                        <rect
-                            x="14"
-                            y="3"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-                        <rect
-                            x="3"
-                            y="14"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-                        <rect
-                            x="14"
-                            y="14"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
+                <a class="nav-item" href="./index.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1"/>
                     </svg>
                     Dashboard
                 </a>
-                <a class="nav-item" href="index2.html">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
+                <a class="nav-item" href="./transfer.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M22 2L11 13"/>
                         <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
                     </svg>
                     Transfer
                 </a>
-                <a class="nav-item" href="#">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="10"
-                        />
+                <a class="nav-item" href="./history.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
                         <polyline points="12 6 12 12 16 14"/>
                     </svg>
                     History
                 </a>
-                <a class="nav-item" href="#">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-                        <polyline points="17 8 12 3 7 8"/>
-                        <line
-                            x1="12"
-                            y1="3"
-                            x2="12"
-                            y2="15"
-                        />
+                <a class="nav-item" href="./topup.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 19V5M5 12l7-7 7 7"/>
                     </svg>
-                    Upload
+                    Top Up
                 </a>
-                <a class="nav-item" href="#">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-                        <circle
-                            cx="9"
-                            cy="7"
-                            r="4"
-                        />
-                        <path d="M23 21v-2a4 4 0 00-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 010 7.75"/>
+                <a class="nav-item active" href="./edit-profile.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
                     </svg>
-                    Pengguna
+                    Profile
                 </a>
             </div>
             <div>
                 <div class="nav-logout">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
                         <polyline points="16 17 21 12 16 7"/>
-                        <line
-                            x1="21"
-                            y1="12"
-                            x2="9"
-                            y2="12"
-                        />
+                        <line x1="21" y1="12" x2="9" y2="12"/>
                     </svg>
                     Keluar
                 </div>
@@ -246,108 +112,107 @@
         </nav>
 
         <main class="dashboard">
+          <div class="left-col" style="grid-column: 1 / -1;">
             <div class="page-header">
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                >
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle
-                        cx="12"
-                        cy="7"
-                        r="4"
-                    />
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
                 </svg>
                 <h1 class="page-title">Profile</h1>
             </div>
 
-            <section>
+            <section class="transfer-section" style="max-width: 600px;">
                 <div class="pin-content">
-                    <h2 class="modal-success-heading" style="font-size: 18px;">Change Pin 👋</h2>
-                    <p class="modal-success-sub">Please save your pin because this so important.</p>
+                    <h2 class="modal-success-heading" style="font-size: 18px;">Change PIN 👋</h2>
+                    <p class="modal-success-sub">Please save your PIN because this is very important.</p>
 
-                    <form id="pinForm">
-                        <div class="pin-input-group">
-                            <input
-                                type="text"
-                                maxlength="1"
-                                inputmode="numeric"
-                                placeholder=" "
-                                required
-                                autofocus
-                            >
-                            <input
-                                type="text"
-                                maxlength="1"
-                                inputmode="numeric"
-                                placeholder=" "
-                                required
-                            >
-                            <input
-                                type="text"
-                                maxlength="1"
-                                inputmode="numeric"
-                                placeholder=" "
-                                required
-                            >
-                            <input
-                                type="text"
-                                maxlength="1"
-                                inputmode="numeric"
-                                placeholder=" "
-                                required
-                            >
-                            <input
-                                type="text"
-                                maxlength="1"
-                                inputmode="numeric"
-                                placeholder=" "
-                                required
-                            >
-                            <input
-                                type="text"
-                                maxlength="1"
-                                inputmode="numeric"
-                                placeholder=" "
-                                required
-                            >
-                        </div>
+                    <div class="pin-input-group">
+                        <input type="text" maxlength="1" inputmode="numeric" placeholder=" " autofocus>
+                        <input type="text" maxlength="1" inputmode="numeric" placeholder=" ">
+                        <input type="text" maxlength="1" inputmode="numeric" placeholder=" ">
+                        <input type="text" maxlength="1" inputmode="numeric" placeholder=" ">
+                        <input type="text" maxlength="1" inputmode="numeric" placeholder=" ">
+                        <input type="text" maxlength="1" inputmode="numeric" placeholder=" ">
+                    </div>
 
-                        <button
-                            type="submit"
-                            class="submit-btn"
-                            style="max-width: 600px; margin: 0 auto;"
-                        >Submit</button>
-                    </form>
+                    <button class="submit-btn" style="max-width: 400px; margin: 0 auto;">Submit</button>
                 </div>
             </section>
+          </div><!-- /.left-col -->
         </main>
 
+        <!-- BOTTOM NAV -->
+        <nav class="bottom-nav">
+            <a class="bottom-nav-item" href="./index.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+                Dashboard
+            </a>
+            <a class="bottom-nav-item" href="./transfer.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M22 2L11 13"/>
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+                </svg>
+                Transfer
+            </a>
+            <a class="bottom-nav-item" href="./history.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                History
+            </a>
+            <a class="bottom-nav-item" href="./topup.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 19V5M5 12l7-7 7 7"/>
+                </svg>
+                Top Up
+            </a>
+            <a class="bottom-nav-item active" href="./edit-profile.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                Profile
+            </a>
+        </nav>
+
         <script>
-        const inputs = document.querySelectorAll('.pin-input-group input');
-
-        inputs.forEach((input, index) => {
-            input.addEventListener('input', (e) => {
-                // Filter non-numeric characters
-                input.value = input.value.replace(/[^0-9]/g, '');
-
-                if (input.value && index < inputs.length - 1) {
-                    inputs[index + 1].focus();
-                }
+            // PIN auto-advance
+            const inputs = document.querySelectorAll('.pin-input-group input');
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', () => {
+                    input.value = input.value.replace(/[^0-9]/g, '');
+                    if (input.value && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                });
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && !input.value && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+                input.addEventListener('focus', () => input.select());
             });
 
-            input.addEventListener('keydown', (e) => {
-                // Backspace logic to return to previous input
-                if (e.key === 'Backspace' && !input.value && index > 0) {
-                    inputs[index - 1].focus();
-                }
-            });
-
-            // Auto-select text on focus for easier correction
-            input.addEventListener('focus', () => input.select());
-        });
+            // Dropdown
+            const dropdown = document.getElementById('userDropdown');
+            const menu = document.getElementById('userDropdownMenu');
+            const chevron = document.getElementById('userChevron');
+            if (dropdown) {
+                dropdown.addEventListener('click', () => {
+                    menu.classList.toggle('open');
+                    chevron.style.transform = menu.classList.contains('open') ? 'rotate(180deg)' : '';
+                });
+                document.addEventListener('click', (e) => {
+                    if (!dropdown.contains(e.target)) menu.classList.remove('open');
+                });
+            }
         </script>
+
     </body>
 </html>

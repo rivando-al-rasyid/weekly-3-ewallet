@@ -3,31 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>E-Wallet — Find People</title>
+        <title>E-Wallet — History</title>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@600&display=swap" rel="stylesheet">
         <link href="../../css/dashboard.css" rel="stylesheet">
     </head>
     <body>
-        Riwayat
+
         <!-- HEADER -->
         <header>
-            <a class="logo" href="#">
+            <a class="logo" href="./index.html">
                 <div class="logo-icon">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <rect
-                            x="2"
-                            y="5"
-                            width="20"
-                            height="14"
-                            rx="2"
-                        />
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="5" width="20" height="14" rx="2"/>
                         <path d="M16 12h2"/>
                         <path d="M2 10h20"/>
                     </svg>
@@ -39,54 +26,25 @@
                 <div class="user-dropdown" id="userDropdown">
                     <div class="user-dropdown-trigger">
                         <div class="avatar">BS</div>
-                        <div class="chevron-down">
-                            <svg
-                                width="14"
-                                height="8"
-                                viewBox="0 0 14 8"
-                                fill="none"
-                            >
-                                <path
-                                    d="M1 1L7 7L13 1"
-                                    stroke="#4F5665"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                />
+                        <div class="chevron-down" id="userChevron">
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+                                <path d="M1 1L7 7L13 1" stroke="#4F5665" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
                     </div>
                     <div class="user-dropdown-menu" id="userDropdownMenu">
-                        <a class="dropdown-item" href="#">
-                            <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            >
+                        <a class="dropdown-item" href="./edit-profile.html">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-                                <circle
-                                    cx="12"
-                                    cy="7"
-                                    r="4"
-                                />
+                                <circle cx="12" cy="7" r="4"/>
                             </svg>
                             Profile
                         </a>
                         <a class="dropdown-item dropdown-item-danger" href="#">
-                            <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
                                 <polyline points="16 17 21 12 16 7"/>
-                                <line
-                                    x1="21"
-                                    y1="12"
-                                    x2="9"
-                                    y2="12"
-                                />
+                                <line x1="21" y1="12" x2="9" y2="12"/>
                             </svg>
                             Keluar
                         </a>
@@ -98,125 +56,49 @@
         <!-- SIDENAV -->
         <nav class="sidenav">
             <div class="sidenav-items">
-                <a class="nav-item" href="index.html">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <rect
-                            x="3"
-                            y="3"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-                        <rect
-                            x="14"
-                            y="3"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-                        <rect
-                            x="3"
-                            y="14"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-                        <rect
-                            x="14"
-                            y="14"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
+                <a class="nav-item" href="./index.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1"/>
                     </svg>
                     Dashboard
                 </a>
-                <a class="nav-item active" href="#">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
+                <a class="nav-item" href="./transfer.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M22 2L11 13"/>
                         <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
                     </svg>
                     Transfer
                 </a>
-                <a class="nav-item" href="#">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="10"
-                        />
+                <a class="nav-item active" href="./history.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
                         <polyline points="12 6 12 12 16 14"/>
                     </svg>
                     History
                 </a>
-                <a class="nav-item" href="#">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-                        <polyline points="17 8 12 3 7 8"/>
-                        <line
-                            x1="12"
-                            y1="3"
-                            x2="12"
-                            y2="15"
-                        />
+                <a class="nav-item" href="./topup.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 19V5M5 12l7-7 7 7"/>
                     </svg>
-                    Upload
+                    Top Up
                 </a>
-                <a class="nav-item" href="#">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
-                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-                        <circle
-                            cx="9"
-                            cy="7"
-                            r="4"
-                        />
-                        <path d="M23 21v-2a4 4 0 00-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 010 7.75"/>
+                <a class="nav-item" href="./edit-profile.html">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
                     </svg>
-                    Pengguna
+                    Profile
                 </a>
             </div>
             <div>
                 <div class="nav-logout">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                    >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
                         <polyline points="16 17 21 12 16 7"/>
-                        <line
-                            x1="21"
-                            y1="12"
-                            x2="9"
-                            y2="12"
-                        />
+                        <line x1="21" y1="12" x2="9" y2="12"/>
                     </svg>
                     Keluar
                 </div>
@@ -226,183 +108,86 @@
         <!-- MAIN -->
         <main class="dashboard">
 
-            <!-- Page Header -->
             <div class="page-header">
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M22 2L11 13"/>
-                    <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
                 </svg>
-                <span class="page-title">Transfer Money</span>
-            </div>
-            <div class="stepper">
-                <div class="step step--active">
-                    <div class="step__circle">1</div>
-                    Find People
-                </div>
-                <div class="step__divider"></div>
-                <div class="step">
-                    <div class="step__circle">2</div>
-                    Set Nominal
-                </div>
-                <div class="step__divider"></div>
-                <div class="step">
-                    <div class="step__circle">3</div>
-                    Finish
-                </div>
+                <span class="page-title">Transaction History</span>
             </div>
 
             <div class="find-people-section">
 
-                <!-- Stepper -->
-
-                <!-- Header Row -->
                 <div class="find-people-header">
                     <div>
-                        <div class="find-people-title">Find People</div>
-                        <div class="find-people-count">15 Results Found</div>
+                        <div class="find-people-title">All Transactions</div>
+                        <div class="find-people-count">9 Results Found</div>
                     </div>
                     <div class="search-wrap">
-                        <input
-                            type="text"
-                            class="search-input"
-                            placeholder="Enter Number Or Full Name"
-                        >
+                        <input type="text" class="search-input" placeholder="Search Transaction">
                         <span class="search-icon-btn">
-                            <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <circle
-                                    cx="11"
-                                    cy="11"
-                                    r="8"
-                                />
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"/>
                                 <path d="M21 21l-4.35-4.35"/>
                             </svg>
                         </span>
                     </div>
                 </div>
 
-                <!-- People Table -->
                 <table class="people-table">
                     <tbody>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=1"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Robert Fox</td>
-                            <td class="pt-phone">Transfer</td>
+                            <td><img src="https://i.pravatar.cc/150?u=1" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Robert Fox</div><div class="pt-phone">Transfer</div></td>
+                            <td></td>
                             <td class="tx-amount income">+Rp50.000</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=2"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Floyd Miles</td>
-                            <td class="pt-phone">Send</td>
+                            <td><img src="https://i.pravatar.cc/150?u=2" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Floyd Miles</div><div class="pt-phone">Send</div></td>
+                            <td></td>
                             <td class="tx-amount expense">-Rp50.000</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=3"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Ujang</td>
-                            <td class="pt-phone">Send</td>
+                            <td><img src="https://i.pravatar.cc/150?u=3" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Ujang</div><div class="pt-phone">Send</div></td>
+                            <td></td>
                             <td class="tx-amount expense">-Rp50.000</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=4"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Raulemons</td>
-                            <td class="pt-phone">Transfer</td>
+                            <td><img src="https://i.pravatar.cc/150?u=4" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Raulemons</div><div class="pt-phone">Transfer</div></td>
+                            <td></td>
                             <td class="tx-amount income">+Rp50.000</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=5"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Reiva</td>
-                            <td class="pt-phone">Transfer</td>
+                            <td><img src="https://i.pravatar.cc/150?u=5" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Reiva</div><div class="pt-phone">Transfer</div></td>
+                            <td></td>
                             <td class="tx-amount income">+Rp50.000</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=6"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Thobie</td>
-                            <td class="pt-phone">Send</td>
+                            <td><img src="https://i.pravatar.cc/150?u=6" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Thobie</div><div class="pt-phone">Send</div></td>
+                            <td></td>
                             <td class="tx-amount expense">-Rp50.000</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=7"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Buzjany</td>
-                            <td class="pt-phone">Transfer</td>
+                            <td><img src="https://i.pravatar.cc/150?u=7" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Buzjany</div><div class="pt-phone">Transfer</div></td>
+                            <td></td>
                             <td class="tx-amount income">+Rp50.000</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=8"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Adisurya</td>
-                            <td class="pt-phone">Send</td>
+                            <td><img src="https://i.pravatar.cc/150?u=8" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Adisurya</div><div class="pt-phone">Send</div></td>
+                            <td></td>
                             <td class="tx-amount expense">-Rp50.000</td>
                         </tr>
                         <tr>
-                            <td>
-                                <img
-                                    src="https://i.pravatar.cc/150?u=9"
-                                    class="pt-avatar"
-                                    alt="avatar"
-                                >
-                            </td>
-                            <td class="pt-name">Miguelle</td>
-                            <td class="pt-phone">Transfer</td>
+                            <td><img src="https://i.pravatar.cc/150?u=9" class="pt-avatar" alt="avatar"></td>
+                            <td><div class="pt-name">Miguelle</div><div class="pt-phone">Transfer</div></td>
+                            <td></td>
                             <td class="tx-amount income">+Rp50.000</td>
                         </tr>
                     </tbody>
@@ -410,6 +195,61 @@
 
             </div>
         </main>
+
+        <!-- BOTTOM NAV -->
+        <nav class="bottom-nav">
+            <a class="bottom-nav-item" href="./index.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+                Dashboard
+            </a>
+            <a class="bottom-nav-item" href="./transfer.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M22 2L11 13"/>
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+                </svg>
+                Transfer
+            </a>
+            <a class="bottom-nav-item active" href="./history.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                History
+            </a>
+            <a class="bottom-nav-item" href="./topup.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 19V5M5 12l7-7 7 7"/>
+                </svg>
+                Top Up
+            </a>
+            <a class="bottom-nav-item" href="./edit-profile.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                Profile
+            </a>
+        </nav>
+
+        <script>
+            const dropdown = document.getElementById('userDropdown');
+            const menu = document.getElementById('userDropdownMenu');
+            const chevron = document.getElementById('userChevron');
+            if (dropdown) {
+                dropdown.addEventListener('click', () => {
+                    menu.classList.toggle('open');
+                    chevron.style.transform = menu.classList.contains('open') ? 'rotate(180deg)' : '';
+                });
+                document.addEventListener('click', (e) => {
+                    if (!dropdown.contains(e.target)) menu.classList.remove('open');
+                });
+            }
+        </script>
 
     </body>
 </html>
