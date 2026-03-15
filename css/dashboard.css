@@ -277,6 +277,7 @@ main.dashboard {
   gap: 16px;
 }
 
+
 .left-col {
   display: flex;
   flex-direction: column;
@@ -1193,6 +1194,14 @@ textarea:focus {
     align-items: start;
     flex-direction: unset;
   }
+    main.dashboard1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: start;
+    flex-direction: unset;
+  }
+
 
   .left-col {
     gap: 20px;
