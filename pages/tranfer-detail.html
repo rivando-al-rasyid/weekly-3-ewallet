@@ -5,11 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>E-Wallet Dashboard</title>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@600&display=swap" rel="stylesheet">
-        <link href="css/dashboard.css" rel="stylesheet">
+        <link href="../css/dashboard.css" rel="stylesheet">
     </head>
     <body>
 
-        <!-- HEADER -->
         <header>
             <a class="logo" href="#">
                 <div class="logo-icon">
@@ -35,10 +34,10 @@
                 <span class="logo-text">E-Wallet</span>
             </a>
             <div class="header-right">
-                <span class="header-name">Ghaluh Wizard</span>
+                <span class="header-name">Halo, Budi Santoso</span>
                 <div class="user-dropdown" id="userDropdown">
                     <div class="user-dropdown-trigger">
-                        <div class="avatar">GW</div>
+                        <div class="avatar">BS</div>
                         <div class="chevron-down" id="userChevron">
                             <svg
                                 width="14"
@@ -95,10 +94,9 @@
             </div>
         </header>
 
-        <!-- SIDENAV -->
         <nav class="sidenav">
             <div class="sidenav-items">
-                <a class="nav-item" href="#">
+                <a class="nav-item active" href="#">
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
@@ -136,7 +134,7 @@
                     </svg>
                     Dashboard
                 </a>
-                <a class="nav-item active" href="#">
+                <a class="nav-item" href="#">
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
@@ -180,7 +178,7 @@
                             y2="15"
                         />
                     </svg>
-                    Top Up
+                    Upload
                 </a>
                 <a class="nav-item" href="#">
                     <svg
@@ -198,10 +196,10 @@
                         <path d="M23 21v-2a4 4 0 00-3-3.87"/>
                         <path d="M16 3.13a4 4 0 010 7.75"/>
                     </svg>
-                    Profile
+                    Pengguna
                 </a>
             </div>
-            <div>
+            <div class="nav-logout-wrapper">
                 <div class="nav-logout">
                     <svg
                         viewBox="0 0 24 24"
@@ -223,25 +221,8 @@
             </div>
         </nav>
 
-        <!-- MAIN -->
         <main>
-            <div class="page-header">
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M22 2L11 13"/>
-                    <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
-                </svg>
-                <span class="page-title">Transfer Money</span>
-            </div>
-
-            <div class="transfer-section">
-                <!-- Stepper -->
+            <section>
                 <div class="stepper">
                     <div class="step">
                         <div class="step__circle">1</div>
@@ -259,11 +240,10 @@
                     </div>
                 </div>
 
-                <!-- People Info -->
                 <p class="section-title">People Information</p>
                 <div class="people-card">
                     <div class="people-info">
-                        <div class="people-avatar">G</div>
+                        <div class="avatar">G</div>
                         <div>
                             <div class="people-name">Ghaluh 1</div>
                             <div class="people-phone">(239) 555-0108</div>
@@ -293,7 +273,6 @@
                     </button>
                 </div>
 
-                <!-- Amount -->
                 <div class="field-block">
                     <p class="field-label">Amount</p>
                     <p class="field-sub">Type the amount you want to transfer and then press continue to the next steps.</p>
@@ -332,37 +311,15 @@
                     </div>
                 </div>
 
-                <!-- Notes -->
                 <div class="field-block">
                     <p class="field-label">Notes</p>
                     <p class="field-sub">You can add some notes for this transfer such as payment coffee or something</p>
                     <textarea placeholder="Enter Some Notes"></textarea>
                 </div>
 
-                <!-- Submit -->
                 <button class="submit-btn">Submit &amp; Transfer</button>
-            </div>
-
-            <!-- SUCCESS MODAL -->
-            <div class="modal-overlay" id="modalOverlay">
-                <div class="modal">
-                    <div class="modal-title">TRANSFER TO GHALUH 1</div>
-                    <div>
-                        <img
-                            src="assets/image4.png"
-                            alt=""
-                            class="modal-illustration"
-                        >
-                    </div>
-                    <h2 class="modal-failed-heading">Oops Transfer <span>Failed</span></h2>
-                    <p class="modal-success-sub">Sorry Theres is an issue for your transfer, try again later !</p>
-                    <button class="modal-btn-done">Try Again</button>
-                    <button class="modal-btn-back">Back To Dashboard</button>
-
-                </div>
-            </div>
+            </section>
         </main>
-
 
     </body>
 </html>
