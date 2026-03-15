@@ -1,35 +1,58 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>E-Wallet Dashboard</title>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@600&display=swap" rel="stylesheet">
-        <link href="css/dashboard.css" rel="stylesheet">
+        <title>E-Wallet - Change PIN</title>
+        <link rel="stylesheet" href="css/dashboard.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+        /* Fixes for missing variables in dashboard.css */
+        :root {
+            --color-border-pin: #e4e8f5;
+            --color-primary: var(--blue);
+            --color-text-heading: var(--dark);
+        }
+
+        .pin-content {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .pin-input-group {
+            max-width: 400px;
+            margin: 40px auto;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .pin-input-group input {
+            /* Overriding specific properties to match image_a87a23.png */
+            width: 50px;
+            height: 60px;
+            font-size: 24px;
+            font-weight: 600;
+            border: none;
+            border-bottom: 2px solid var(--color-border-pin);
+            text-align: center;
+            background: transparent;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .pin-input-group input:focus,
+        .pin-input-group input:not(:placeholder-shown) {
+            border-bottom: 2px solid var(--blue);
+        }
+        </style>
     </head>
     <body>
-
+        <!-- HEADER -->
         <header>
             <a class="logo" href="#">
                 <div class="logo-icon">
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <rect
-                            x="2"
-                            y="5"
-                            width="20"
-                            height="14"
-                            rx="2"
-                        />
-                        <path d="M16 12h2"/>
-                        <path d="M2 10h20"/>
-                    </svg>
+                    <i class="fa-solid fa-money-bill"></i>
                 </div>
                 <span class="logo-text">E-Wallet</span>
             </a>
@@ -94,6 +117,7 @@
             </div>
         </header>
 
+        <!-- SIDENAV -->
         <nav class="sidenav">
             <div class="sidenav-items">
                 <a class="nav-item active" href="#">
@@ -134,7 +158,7 @@
                     </svg>
                     Dashboard
                 </a>
-                <a class="nav-item" href="#">
+                <a class="nav-item" href="index2.html">
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
@@ -199,7 +223,7 @@
                     Pengguna
                 </a>
             </div>
-            <div class="nav-logout-wrapper">
+            <div>
                 <div class="nav-logout">
                     <svg
                         viewBox="0 0 24 24"
@@ -222,104 +246,108 @@
         </nav>
 
         <main>
+            <div class="page-header">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle
+                        cx="12"
+                        cy="7"
+                        r="4"
+                    />
+                </svg>
+                <h1 class="page-title">Profile</h1>
+            </div>
+
             <section>
-                <div class="stepper">
-                    <div class="step">
-                        <div class="step__circle">1</div>
-                        Find People
-                    </div>
-                    <div class="step__divider"></div>
-                    <div class="step step--active">
-                        <div class="step__circle">2</div>
-                        Set Nominal
-                    </div>
-                    <div class="step__divider"></div>
-                    <div class="step">
-                        <div class="step__circle">3</div>
-                        Finish
-                    </div>
-                </div>
+                <div class="pin-content">
+                    <h2 class="modal-success-heading" style="font-size: 18px;">Change Pin 👋</h2>
+                    <p class="modal-success-sub">Please save your pin because this so important.</p>
 
-                <p class="section-title">People Information</p>
-                <div class="people-card">
-                    <div class="people-info">
-                        <div class="avatar">G</div>
-                        <div>
-                            <div class="people-name">Ghaluh 1</div>
-                            <div class="people-phone">(239) 555-0108</div>
-                            <span class="badge">
-                                <span class="badge__dot"></span>
-                                Verified
-                            </span>
-                        </div>
-                    </div>
-                    <button
-                        class="star-btn"
-                        title="Add to favorites"
-                        aria-label="Favorite"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        >
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="field-block">
-                    <p class="field-label">Amount</p>
-                    <p class="field-sub">Type the amount you want to transfer and then press continue to the next steps.</p>
-                    <div class="input-wrap">
-                        <span class="input-icon">
-                            <svg
-                                width="15"
-                                height="15"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                    <form id="pinForm">
+                        <div class="pin-input-group">
+                            <input
+                                type="text"
+                                maxlength="1"
+                                inputmode="numeric"
+                                placeholder=" "
+                                required
+                                autofocus
                             >
-                                <rect
-                                    x="2"
-                                    y="5"
-                                    width="20"
-                                    height="14"
-                                    rx="2"
-                                />
-                                <line
-                                    x1="2"
-                                    y1="10"
-                                    x2="22"
-                                    y2="10"
-                                />
-                            </svg>
-                        </span>
-                        <input
-                            type="number"
-                            placeholder="Enter Nominal Transfer"
-                            min="0"
-                        >
-                    </div>
-                </div>
+                            <input
+                                type="text"
+                                maxlength="1"
+                                inputmode="numeric"
+                                placeholder=" "
+                                required
+                            >
+                            <input
+                                type="text"
+                                maxlength="1"
+                                inputmode="numeric"
+                                placeholder=" "
+                                required
+                            >
+                            <input
+                                type="text"
+                                maxlength="1"
+                                inputmode="numeric"
+                                placeholder=" "
+                                required
+                            >
+                            <input
+                                type="text"
+                                maxlength="1"
+                                inputmode="numeric"
+                                placeholder=" "
+                                required
+                            >
+                            <input
+                                type="text"
+                                maxlength="1"
+                                inputmode="numeric"
+                                placeholder=" "
+                                required
+                            >
+                        </div>
 
-                <div class="field-block">
-                    <p class="field-label">Notes</p>
-                    <p class="field-sub">You can add some notes for this transfer such as payment coffee or something</p>
-                    <textarea placeholder="Enter Some Notes"></textarea>
+                        <button
+                            type="submit"
+                            class="submit-btn"
+                            style="max-width: 600px; margin: 0 auto;"
+                        >Submit</button>
+                    </form>
                 </div>
-
-                <button class="submit-btn">Submit &amp; Transfer</button>
             </section>
         </main>
 
+        <script>
+        const inputs = document.querySelectorAll('.pin-input-group input');
+
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                // Filter non-numeric characters
+                input.value = input.value.replace(/[^0-9]/g, '');
+
+                if (input.value && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener('keydown', (e) => {
+                // Backspace logic to return to previous input
+                if (e.key === 'Backspace' && !input.value && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+
+            // Auto-select text on focus for easier correction
+            input.addEventListener('focus', () => input.select());
+        });
+        </script>
     </body>
 </html>

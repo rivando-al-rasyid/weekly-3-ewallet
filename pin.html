@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Wallet - Change PIN</title>
-    <link rel="stylesheet" href="css/dashboard.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>E-Wallet - Change PIN</title>
+        <link rel="stylesheet" href="css/dashboard.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <style>
         /* Bridge styles for the PIN group to ensure they match dashboard.css logic */
         .pin-container {
             text-align: center;
@@ -28,95 +28,234 @@
         .modal-body-custom {
             text-align: center;
         }
-    </style>
-</head>
-<body>
-    <header>
-        <a href="#" class="logo">
-            <div class="logo-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                    <rect x="2" y="5" width="20" height="14" rx="2" />
-                    <line x1="2" y1="10" x2="22" y2="10" />
-                </svg>
-            </div>
-            <span class="logo-text">E-Wallet</span>
-        </a>
-        <div class="header-right">
-            <span class="header-name">Ghaluh Wizard</span>
-            <div class="user-dropdown">
-                <div class="user-dropdown-trigger">
-                    <div class="avatar">
-                        <img src="https://via.placeholder.com/44" alt="User">
-                    </div>
-                    <div class="chevron-down">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 9l6 6 6-6" />
-                        </svg>
-                    </div>
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        stroke-width="2"
+                    >
+                        <rect
+                            x="2"
+                            y="5"
+                            width="20"
+                            height="14"
+                            rx="2"
+                        />
+                        <line
+                            x1="2"
+                            y1="10"
+                            x2="22"
+                            y2="10"
+                        />
+                    </svg>
                 </div>
-            </div>
-        </div>
-    </header>
-
-    <nav class="sidenav">
-        <div class="sidenav-items">
-            <a href="#" class="nav-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                Dashboard
+                <span class="logo-text">E-Wallet</span>
             </a>
-            <a href="#" class="nav-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-                Transfer
-            </a>
-            <a href="#" class="nav-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                History
-            </a>
-            <a href="#" class="nav-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-                Top Up
-            </a>
-            <a href="#" class="nav-item active">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                Profile
-            </a>
-        </div>
-        <div class="nav-logout">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
-            Keluar
-        </div>
-    </nav>
-
-
-    <main>
-        <div class="modal-overlay">
-            <div class="modal">
-                <div class="modal-title">CHANGE PIN</div>
-
-                <div class="modal-body-custom">
-                    <h2 class="modal-success-heading">Enter Your Pin 👋</h2>
-                    <p class="modal-success-sub">Enter Your Pin For Transaction</p>
-
-                    <form id="pinForm">
-                        <div class="pin-input-group">
-                            <input type="text" maxlength="1" inputmode="numeric" placeholder="0" required autofocus>
-                            <input type="text" maxlength="1" inputmode="numeric" placeholder="0" required>
-                            <input type="text" maxlength="1" inputmode="numeric" placeholder="0" required>
-                            <input type="text" maxlength="1" inputmode="numeric" placeholder="0" required>
-                            <input type="text" maxlength="1" inputmode="numeric" placeholder="0" required>
-                            <input type="text" maxlength="1" inputmode="numeric" placeholder="0" required>
+            <div class="header-right">
+                <span class="header-name">Ghaluh Wizard</span>
+                <div class="user-dropdown">
+                    <div class="user-dropdown-trigger">
+                        <div class="avatar">
+                            <img src="https://via.placeholder.com/44" alt="User">
                         </div>
-
-                        <button type="submit" class="modal-btn-done" style="margin-top: 20px;">Next</button>
-                    </form>
-
-                    <p class="modal-success-sub" style="margin-top: 15px;">
-                        Forgot Your Pin? <a href="#" style="color: var(--blue); font-weight: 600; text-decoration: none;">Reset</a>
-                    </p>
+                        <div class="chevron-down">
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </header>
 
-</body>
+        <nav class="sidenav">
+            <div class="sidenav-items">
+                <a href="#" class="nav-item">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <rect
+                            x="3"
+                            y="3"
+                            width="7"
+                            height="7"
+                        />
+                        <rect
+                            x="14"
+                            y="3"
+                            width="7"
+                            height="7"
+                        />
+                        <rect
+                            x="14"
+                            y="14"
+                            width="7"
+                            height="7"
+                        />
+                        <rect
+                            x="3"
+                            y="14"
+                            width="7"
+                            height="7"
+                        />
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="#" class="nav-item">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                    Transfer
+                </a>
+                <a href="#" class="nav-item">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="10"
+                        />
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    History
+                </a>
+                <a href="#" class="nav-item">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                    Top Up
+                </a>
+                <a href="#" class="nav-item active">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle
+                            cx="12"
+                            cy="7"
+                            r="4"
+                        />
+                    </svg>
+                    Profile
+                </a>
+            </div>
+            <div class="nav-logout">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>
+                </svg>
+                Keluar
+            </div>
+        </nav>
+
+
+        <main>
+            <div class="modal-overlay">
+                <div class="modal">
+                    <div class="modal-title">CHANGE PIN</div>
+
+                    <div class="modal-body-custom">
+                        <h2 class="modal-success-heading">Enter Your Pin 👋</h2>
+                        <p class="modal-success-sub">Enter Your Pin For Transaction</p>
+
+                        <form id="pinForm">
+                            <div class="pin-input-group">
+                                <input
+                                    type="text"
+                                    maxlength="1"
+                                    inputmode="numeric"
+                                    placeholder="0"
+                                    required
+                                    autofocus
+                                >
+                                <input
+                                    type="text"
+                                    maxlength="1"
+                                    inputmode="numeric"
+                                    placeholder="0"
+                                    required
+                                >
+                                <input
+                                    type="text"
+                                    maxlength="1"
+                                    inputmode="numeric"
+                                    placeholder="0"
+                                    required
+                                >
+                                <input
+                                    type="text"
+                                    maxlength="1"
+                                    inputmode="numeric"
+                                    placeholder="0"
+                                    required
+                                >
+                                <input
+                                    type="text"
+                                    maxlength="1"
+                                    inputmode="numeric"
+                                    placeholder="0"
+                                    required
+                                >
+                                <input
+                                    type="text"
+                                    maxlength="1"
+                                    inputmode="numeric"
+                                    placeholder="0"
+                                    required
+                                >
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="modal-btn-done"
+                                style="margin-top: 20px;"
+                            >Next</button>
+                        </form>
+
+                        <p class="modal-success-sub" style="margin-top: 15px;">
+                            Forgot Your Pin? <a href="#" style="color: var(--blue); font-weight: 600; text-decoration: none;">Reset</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </body>
 </html>
