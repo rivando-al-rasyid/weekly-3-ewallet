@@ -12,6 +12,7 @@
 ## 🇮🇩 Versi Bahasa Indonesia
 
 ### Tentang Project
+
 **VanWallet** adalah sistem pembayaran berbasis e-wallet yang dirancang untuk penggunaan **desktop dan mobile**. Dibangun menggunakan teknologi web standar, VanWallet bertujuan memberikan pengalaman transaksi digital yang mudah, cepat, dan responsif.
 
 > ⚠️ **Status:** Project ini masih dalam tahap pengembangan aktif (*Work in Progress*). Fitur dan tampilan dapat berubah sewaktu-waktu.
@@ -22,6 +23,7 @@
 
 | Teknologi | Kegunaan |
 |-----------|----------|
+
 | ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white) | Struktur halaman |
 | ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white) | Styling & Responsivitas |
 | ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) | Logika & Interaktivitas |
@@ -37,7 +39,7 @@
 - [x] 📥 Top-up saldo
 - [x] 🧾 Riwayat transaksi
 - [x] 👤 Edit profil, ganti password & PIN
-- [ ] 📱 Tampilan responsif (mobile & desktop)
+- [x] 📱 Tampilan responsif (mobile & desktop)
 
 ---
 
@@ -154,7 +156,7 @@ Project ini belum memiliki lisensi resmi. Akan diperbarui seiring perkembangan p
 - [x] 📥 Top-up balance
 - [x] 🧾 Transaction history
 - [x] 👤 Edit profile, change password & PIN
-- [ ] 📱 Fully responsive layout (mobile & desktop)
+- [x] 📱 Fully responsive layout (mobile & desktop)
 
 ---
 

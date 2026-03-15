@@ -794,8 +794,8 @@ textarea:focus {
   align-items: flex-end;    /* slide up from bottom on mobile */
   justify-content: center;
   z-index: 50; /* above content inside main, but below header (z-index:100) and sidenav (z-index:90) */
-  backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   animation: fadeIn 0.2s ease;
   padding: 0 8px 8px;
 }
