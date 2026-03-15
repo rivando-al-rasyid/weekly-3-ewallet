@@ -1303,3 +1303,38 @@ textarea:focus {
     padding: 32px 48px;
   }
 }
+
+
+.fast-service-header {
+    display: flex;
+    justify-content: space-between; /* Pushes title left and buttons right */
+    align-items: center;           /* Vertically centers them */
+    margin-bottom: 20px;
+    padding: 0 5px;                /* Optional padding for alignment */
+}
+
+.fast-service-actions {
+    display: flex;
+    gap: 12px;                     /* Space between Top Up and Transfer buttons */
+}
+
+.btn-service {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--blue);
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.btn-service:hover {
+    background-color: var(--blue);
+    color: var(--white);
+    border-color: var(--blue);
+}

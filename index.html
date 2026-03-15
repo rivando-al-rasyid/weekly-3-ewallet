@@ -304,47 +304,18 @@
 
     /* ── APP SHOWCASE ── */
 .showcase {
-  width: 100vw;
+  /* Two background images: Vector.png on top, Vector-1.png on bottom */
+  background-image: url("./assets/Vector.png"), url("./assets/Vector-1.png");
+  background-position: top left, bottom left;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100% auto, 100% auto;
+
+  /* Padding makes room so content isn't hidden behind the wave images */
+  padding: 60px 60px 80px;
+
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--blue);
-  height: auto;
-  padding: 0;
+  width: 100%;
   box-sizing: border-box;
-  overflow: visible;
-}
-
-.showcase::before {
-  content: none;
-}
-
-.showcase-wave { position: relative; z-index: 1; }
-
-.showcase-wave-top {
-  width: 100%;
-  display: block;
-  line-height: 0;
-}
-
-.showcase-wave-top img {
-  width: 100%;
-  display: block;
-}
-
-.showcase-wave-bottom {
-  width: 100%;
-  display: block;
-  line-height: 0;
-}
-
-.showcase-wave-bottom img {
-  width: 100%;
-  display: block;
-}
-
-.showcase-content {
-  padding: 60px 20px;
 }
 
 .showcase-inner {
@@ -352,45 +323,65 @@
   width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
   align-items: center;
-}    .feature-list { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
 
-    .feature-item { display: flex; gap: 16px; align-items: flex-start; }
+  /* Keep content in front of the background images */
+  position: relative;
+  z-index: 1;
+}
+
+/* Phone mockup sizing — larger, bottom-anchored like image 2 */
+.phone-mockup {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.phone-mockup img {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.35)) drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+}
+
+    .feature-list { display: flex; flex-direction: column; gap: 24px; margin-bottom: 40px; }
+
+    .feature-item { display: flex; gap: 20px; align-items: center; }
 
     .feature-icon {
-      width: 40px; height: 40px; min-width: 40px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 10px;
+      width: 52px; height: 52px; min-width: 52px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
     }
 
-    .feature-icon svg { width: 18px; height: 18px; stroke: white; fill: none; stroke-width: 2; }
+    .feature-icon svg { width: 22px; height: 22px; stroke: white; fill: none; stroke-width: 2; }
 
     .feature-item-text h4 {
       font-family: 'Sora', sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       color: white;
       margin-bottom: 4px;
     }
 
-    .feature-item-text p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+    .feature-item-text p { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.6; }
 
     .showcase-text h2 {
       font-family: 'Sora', sans-serif;
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 800;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
       color: white;
-      letter-spacing: -1px;
+      letter-spacing: -0.5px;
       line-height: 1.15;
       margin-bottom: 16px;
     }
 
     .showcase-text > p {
-      font-size: 15px;
-      color: rgba(255,255,255,0.75);
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
       line-height: 1.7;
       margin-bottom: 36px;
     }
@@ -694,22 +685,131 @@
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 0 24px; }
-      .hero, .about-inner, .showcase-inner { grid-template-columns: 1fr; }
-      .hero { padding: 60px 24px; }
-      .about { padding: 70px 24px; }
-      .feature-cards { grid-template-columns: 1fr; }
-      .wave-bg { padding: 50px 24px 90px; }
-      .partners { padding: 28px 24px; }
-      .testimonials { padding: 70px 24px; }
-      .testimonial-track { grid-template-columns: 1fr; }
-      .site-footer { padding: 48px 24px 0; }
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+
+    /* ── TABLET (≤ 1024px) ── */
+    @media (max-width: 1024px) {
+      nav { padding: 0 32px; }
+
+      .hero {
+        padding: 70px 32px;
+        gap: 40px;
+      }
+
+      .hero-text h1 { font-size: 44px; }
+
+      .about { padding: 80px 32px; }
+      .about-inner { gap: 40px; }
+      .about-left h2 { font-size: 32px; }
+
+      .showcase { padding: 50px 32px 70px; }
+      .showcase-inner { gap: 40px; }
+
+      .testimonials { padding: 80px 32px; }
+      .testimonial-track { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+      .site-footer { padding: 48px 32px 0; }
+      .footer-inner { gap: 32px; }
     }
 
+    /* ── SMALL TABLET / LARGE MOBILE (≤ 900px) ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; height: 64px; }
+      .nav-brand span { font-size: 17px; }
+      .btn-outline, .btn-solid { padding: 8px 16px; font-size: 13px; }
+
+      /* Hero: stack vertically, visual below text */
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 52px 20px 60px;
+        gap: 40px;
+        text-align: center;
+      }
+      .hero-text h1 { font-size: clamp(32px, 7vw, 44px); }
+      .hero-text p { margin-left: auto; margin-right: auto; }
+      .hero-visual { justify-content: center; }
+      .hero-visual img { max-width: 340px; }
+      .platform-icons { justify-content: center; }
+
+      /* Partners */
+      .partners { padding: 24px 20px; }
+      .partners-inner { justify-content: center; gap: 16px; }
+
+      /* About */
+      .about { padding: 64px 20px; }
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+      .about-left h2 { font-size: 30px; }
+      .feature-cards { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+      /* Showcase */
+      .showcase { padding: 40px 20px 64px; }
+      .showcase-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+        text-align: center;
+      }
+      .phone-mockup {
+        justify-content: center;
+        margin-bottom: -20px;
+      }
+      .phone-mockup img { max-width: 260px; }
+      .feature-list { text-align: left; }
+      .showcase-text h2 { font-size: clamp(28px, 6vw, 40px); }
+      .btn-cta-white { width: 100%; max-width: 300px; }
+
+      /* Testimonials */
+      .testimonials { padding: 64px 20px; }
+      .testimonial-track { grid-template-columns: 1fr; gap: 16px; }
+      .slider-btn { display: none; }
+
+      /* Footer */
+      .site-footer { padding: 40px 20px 0; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 28px; }
+    }
+
+    /* ── MOBILE (≤ 600px) ── */
     @media (max-width: 600px) {
-      .footer-inner { grid-template-columns: 1fr; }
+      nav { padding: 0 16px; }
+      .nav-actions { gap: 8px; }
+      .btn-outline { display: none; } /* hide sign-in on very small screens */
+
+      .hero { padding: 40px 16px 52px; }
+      .hero-text h1 { font-size: clamp(28px, 8vw, 38px); letter-spacing: -0.5px; }
+      .hero-text p { font-size: 15px; }
+      .btn-cta { width: 100%; text-align: center; }
+      .hero-visual img { max-width: 300px; }
+
+      .partners { padding: 20px 16px; }
+      .partners-inner span { font-size: 15px; }
+
+      .about { padding: 52px 16px; }
+      .about-left h2 { font-size: 26px; }
+      .feature-cards { grid-template-columns: 1fr; }
+
+      .showcase { padding: 36px 16px 56px; }
+      .phone-mockup img { max-width: 220px; }
+      .showcase-text h2 { font-size: clamp(24px, 7vw, 32px); }
+      .showcase-text > p { font-size: 14px; }
+      .feature-item-text h4 { font-size: 14px; }
+      .feature-item-text p { font-size: 13px; }
+
+      .testimonials { padding: 52px 16px; }
+      .testimonials h2 { font-size: 28px; }
+      .testimonial-card { padding: 24px 20px; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .site-footer { padding: 36px 16px 0; }
+    }
+
+    /* ── VERY SMALL MOBILE (≤ 380px) ── */
+    @media (max-width: 380px) {
+      .hero-text h1 { font-size: 26px; }
+      .phone-mockup img { max-width: 190px; }
+      .showcase-text h2 { font-size: 22px; }
+      .feature-icon { width: 44px; height: 44px; min-width: 44px; }
     }
         </style>
     </head>
@@ -826,15 +926,7 @@
 
         <!-- ───── SECTION 3: APP FEATURES (new) ───── -->
         <section class="showcase">
-            <!-- Wave Top -->
-            <div class="showcase-wave-top">
-                <img src="./Vector.png" alt="">
-            </div>
-
-            <!-- Content -->
-            <div class="showcase-content">
-            <div class="showcase-wave">
-                <div class="showcase-inner">
+            <div class="showcase-inner">
 
                     <!-- Phone Mockup -->
                     <div class="phone-mockup">
@@ -911,14 +1003,6 @@
                         <button class="btn-cta-white">Get Started</button>
                     </div>
 
-                </div>
-            </div>
-    </div>
-            </div><!-- end showcase-content -->
-
-            <!-- Wave Bottom -->
-            <div class="showcase-wave-bottom">
-                <img src="./Vector-1.png" alt="">
             </div>
         </section>
 
